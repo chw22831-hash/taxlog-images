@@ -279,6 +279,42 @@ def s_action(s, i, n):
     return im
 
 
+def s_cta(s, i, n):
+    """잠긴(블러) 카드로 궁금증 유발 + 댓글 키워드 안내."""
+    from PIL import ImageFilter
+    im = Image.new("RGB", (W, H), DEEP2)
+    d = ImageDraw.Draw(im)
+    logo(d, W - M - logo_w(d), 76, dark=True)
+    y = 170
+    d.rectangle([M, y, M + 60, y + 4], fill=GOLD)
+    y = block(d, M, y + 36, s.get("title", ""), F("Black", 66), WHITE, W - 2 * M, 1.3, s.get("highlight"), GOLD) + 40
+    for k, c in enumerate(s.get("locked", []), 1):
+        h = 150
+        d.rounded_rectangle([M, y, W - M, y + h], radius=22, fill=(38, 34, 92), outline=(70, 64, 140), width=2)
+        cx, cy = M + 60, y + h // 2
+        d.ellipse([cx - 26, cy - 26, cx + 26, cy + 26], fill=GOLD)
+        nf = F("Bold", 28)
+        d.text((cx - d.textlength(str(k), font=nf) / 2, cy - 20), str(k), font=nf, fill=INK)
+        # 흐리게 처리한 본문
+        layer = Image.new("RGB", (W - 2 * M - 140, h - 40), (38, 34, 92))
+        ld = ImageDraw.Draw(layer)
+        block(ld, 0, 6, c, F("Bold", 36), WHITE, layer.width, 1.35)
+        layer = layer.filter(ImageFilter.GaussianBlur(9))
+        im.paste(layer, (M + 110, y + 20))
+        d = ImageDraw.Draw(im)
+        lf = F("Bold", 26)
+        pill(d, W - M - 150, y + h // 2 - 23, "🔒 잠김" if False else "LOCK", lf, GOLD, INK, padx=18)
+        y += h + 20
+    y += 30
+    kw = s.get("keyword", "알려줘")
+    y = block(d, M, y, s.get("cta", f"댓글에 '{kw}' 남겨주시면\nDM으로 정리본 보내드려요"), F("Bold", 46), WHITE,
+              W - 2 * M, 1.4, f"'{kw}'", YELLOW, align="center")
+    block(d, M, H - 150, "본 콘텐츠는 일반 정보 제공 목적이며 개인별 세무·투자 자문이 아닙니다. 정부안·법안은 국회 심의 과정에서 달라질 수 있습니다.",
+          F("Regular", 24), (150, 150, 185), W - 2 * M, 1.5)
+    page(d, i, n, dark=True)
+    return im
+
+
 def s_outro(s, i, n):
     im = Image.new("RGB", (W, H), DEEP2)
     d = ImageDraw.Draw(im)
@@ -303,7 +339,7 @@ def main(spec_path, out_dir):
     slides = spec["slides"]
     n = len(slides)
     os.makedirs(out_dir, exist_ok=True)
-    fn = {"list": s_list, "compare": s_compare, "stat": s_stat, "action": s_action}
+    fn = {"list": s_list, "compare": s_compare, "stat": s_stat, "action": s_action, "cta": s_cta}
     paths = []
     for i, s in enumerate(slides, 1):
         t = s.get("type", "list")

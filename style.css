@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Noto Sans KR',sans-serif;background:#FBFBFD;color:#16161E;line-height:1.65;-webkit-font-smoothing:antialiased}
+.top{display:flex;justify-content:space-between;align-items:center;padding:18px 20px;background:#0D0B28}
+.logo{color:#fff;text-decoration:none;font-weight:700;font-size:18px;display:flex;align-items:center;gap:8px}
+.logo span{background:#3D2BD9;border-radius:6px;width:24px;height:24px;display:inline-flex;align-items:center;justify-content:center;font-weight:900;font-size:15px}
+.logo b{color:#E8C77A}
+.date{color:#8C8CB4;font-size:13px}
+main{max-width:640px;margin:0 auto;padding:28px 20px 60px}
+.tag{display:inline-block;background:#FFE58A;border-radius:999px;padding:4px 14px;font-size:13px;font-weight:700}
+h1{font-size:28px;font-weight:900;line-height:1.35;margin:14px 0 12px}
+h1 em{font-style:normal;color:#C8334F}
+.lead{color:#444;margin-bottom:24px}
+.card{background:#fff;border:1px solid #E2E0EC;border-radius:16px;padding:22px 20px;margin-bottom:16px;position:relative}
+.num{width:32px;height:32px;border-radius:50%;background:#C8334F;color:#fff;font-weight:700;display:flex;align-items:center;justify-content:center;margin-bottom:10px}
+h2{font-size:19px;font-weight:700;margin-bottom:8px}
+.card p{color:#333}
+ul{padding-left:18px}li{margin:6px 0}
+table{width:100%;border-collapse:collapse;margin-top:12px;font-size:14px}
+th{background:#3D2BD9;color:#fff;padding:9px;text-align:left}
+th+th{background:#12277A}
+td{border-bottom:1px solid #ECEAF3;padding:9px;vertical-align:top;width:50%}
+.list a{display:block;background:#fff;border:1px solid #E2E0EC;border-radius:14px;padding:16px 18px;margin-bottom:12px;text-decoration:none;color:#16161E}
+.list small{color:#6E6E7D}
+.src{font-size:13px;color:#6E6E7D;margin-top:24px}
+.disc{font-size:12px;color:#8A8A99;background:#F5F4FA;border-radius:10px;padding:12px;margin:12px 0 20px}
+.follow{display:block;text-align:center;background:#16133F;color:#E8C77A;font-weight:700;border-radius:999px;padding:14px;text-decoration:none}

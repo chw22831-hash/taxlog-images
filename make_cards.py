@@ -23,6 +23,11 @@ spec.json 구조
   ]
 }
 highlight: 제목 안에서 크림슨으로 강조할 단어(선택)
+cover 추가 옵션:
+  "theme": "midnight"(기본·남색 글로우) | "light"(라벤더 밝은 톤) | "crimson"(와인→크림슨)
+           | "indigo"(인디고 원형 라인) | "split"(위 남색 블록 + 큰 숫자, 아래 흰 바탕 제목)
+  "big":   짧은 숫자·키워드(예: "2029", "22%") — 배경에 크게 깔림(split에선 메인 비주얼)
+  ※ 전날 표지와 같은 theme 연속 사용 금지(겹치는 건 OK, 연속만 피하기)
 """
 import json, os, sys
 from PIL import Image, ImageDraw, ImageFont
@@ -109,10 +114,10 @@ def pill(d, x, y, text, f, fill, color, padx=22, h=None):
     return x + w
 
 
-def logo(d, x, y, dark=False):
+def logo(d, x, y, dark=False, box=None, tcol=WHITE):
     s = 34
-    d.rounded_rectangle([x, y, x + s, y + s], radius=8, fill=INDIGO)
-    d.text((x + 8, y - 2), "T", font=F("Black", 30), fill=WHITE)
+    d.rounded_rectangle([x, y, x + s, y + s], radius=8, fill=box or INDIGO)
+    d.text((x + 8, y - 2), "T", font=F("Black", 30), fill=tcol)
     f = F("Bold", 30)
     c = WHITE if dark else NAVY
     d.text((x + s + 10, y - 2), "Tax", font=f, fill=c)
@@ -150,7 +155,107 @@ def card(d, box, fill=WHITE, outline=LINE, r=22):
 
 # ---------- slide types ----------
 
+COVER_THEMES = ("midnight", "light", "crimson", "indigo", "split")
+
+
+def _grad(c1, c2, vertical=True):
+    im = Image.new("RGB", (W, H), c1)
+    d = ImageDraw.Draw(im)
+    n = H if vertical else W
+    for k in range(n):
+        t = k / (n - 1)
+        c = tuple(int(c1[j] + (c2[j] - c1[j]) * t) for j in range(3))
+        if vertical:
+            d.line([(0, k), (W, k)], fill=c)
+        else:
+            d.line([(k, 0), (k, H)], fill=c)
+    return im
+
+
+def _cover_text(d, s, y, title_c, hl_c, sub_c, label_c, bar_c, tag_fill, tag_c, max_y=None):
+    d.rectangle([M, y, M + 60, y + 4], fill=bar_c)
+    d.text((M, y + 24), s.get("label", "TODAY'S TAX"), font=F("Bold", 30), fill=label_c)
+    y += 100
+    y = block(d, M, y, s["title"], F("Black", 104), title_c, W - 2 * M, 1.25, s.get("highlight"), hl_c)
+    y += 30
+    if s.get("subtitle"):
+        y = block(d, M, y, s["subtitle"], F("Medium", 40), sub_c, W - 2 * M, 1.5)
+    if s.get("tag"):
+        pill(d, M, y + 40, "★ " + s["tag"], F("Bold", 30), tag_fill, tag_c)
+        y += 40 + 52
+    return y
+
+
+def _cover_footer(d, date, dark, box=None, tcol=WHITE):
+    logo(d, M, H - 110, dark=dark, box=box, tcol=tcol)
+    f = F("Medium", 26)
+    d.text((W - M - d.textlength(date, font=f), H - 106), date, font=f,
+           fill=(140, 140, 180) if dark else SUB)
+
+
+def _big(d, s, x_right, y, color):
+    """선택: 'big' 필드(짧은 숫자·키워드)를 배경 장식으로 크게."""
+    if not s.get("big"):
+        return
+    f = F("Black", 230)
+    t = s["big"]
+    while d.textlength(t, font=f) > W - 2 * M and f.size > 120:
+        f = F("Black", f.size - 20)
+    d.text((x_right - d.textlength(t, font=f), y), t, font=f, fill=color)
+
+
 def s_cover(s, i, n, date):
+    theme = s.get("theme", "midnight")
+    if theme == "light":
+        im = Image.new("RGB", (W, H), LAV2)
+        d = ImageDraw.Draw(im)
+        d.ellipse([W - 520, -260, W + 260, 520], fill=LAV)
+        d.rectangle([0, 0, 24, H], fill=INDIGO)
+        _big(d, s, W - M + 10, 20, (226, 222, 245))
+        _cover_text(d, s, 330, INK, CRIMSON, SUB, INDIGO, CRIMSON, INDIGO, WHITE)
+        _cover_footer(d, date, False)
+        return im
+    if theme == "crimson":
+        im = _grad(WINE, CRIMSON)
+        d = ImageDraw.Draw(im)
+        d.ellipse([-300, H - 520, 420, H + 200], fill=tuple(min(255, c + 14) for c in CRIMSON))
+        _big(d, s, W - M + 10, 20, tuple(min(255, c + 22) for c in WINE))
+        _cover_text(d, s, 330, WHITE, YELLOW, (255, 225, 232), YELLOW, YELLOW, WHITE, WINE)
+        _cover_footer(d, date, True)
+        return im
+    if theme == "indigo":
+        im = _grad(INDIGO, NAVY, vertical=False)
+        d = ImageDraw.Draw(im)
+        for r, a in ((560, 18), (400, 30), (240, 44)):
+            c = tuple(min(255, INDIGO[k] + a) for k in range(3))
+            d.ellipse([W - 200 - r, 180 - r, W - 200 + r, 180 + r], outline=c, width=3)
+        _big(d, s, W - M + 10, 20, tuple(min(255, c + 26) for c in INDIGO))
+        _cover_text(d, s, 330, WHITE, YELLOW, (215, 215, 245), GOLD, GOLD, YELLOW, INK)
+        _cover_footer(d, date, True, box=WHITE, tcol=INDIGO)
+        return im
+    if theme == "split":
+        im = Image.new("RGB", (W, H), BG)
+        d = ImageDraw.Draw(im)
+        top = 470
+        d.rectangle([0, 0, W, top], fill=NAVY)
+        d.ellipse([W - 360, -200, W + 200, 360], fill=INDIGO)
+        if s.get("big"):
+            f = F("Black", 230)
+            while d.textlength(s["big"], font=f) > W - 2 * M and f.size > 100:
+                f = F("Black", f.size - 20)
+            bb = d.textbbox((0, 0), s["big"], font=f)
+            d.text((M, top - 40 - bb[3]), s["big"], font=f, fill=YELLOW)
+        d.text((M, 70), s.get("label", "TODAY'S TAX"), font=F("Bold", 30), fill=GOLD)
+        y = top + 60
+        y = block(d, M, y, s["title"], F("Black", 92), INK, W - 2 * M, 1.25, s.get("highlight"), CRIMSON)
+        y += 24
+        if s.get("subtitle"):
+            y = block(d, M, y, s["subtitle"], F("Medium", 38), SUB, W - 2 * M, 1.5)
+        if s.get("tag"):
+            pill(d, M, y + 34, "★ " + s["tag"], F("Bold", 30), CRIMSON, WHITE)
+        _cover_footer(d, date, False)
+        return im
+    # midnight (기본)
     im = Image.new("RGB", (W, H), DEEP2)
     d = ImageDraw.Draw(im)
     # 오른쪽 아래로 은은한 인디고 그라데이션 + 원형 글로우

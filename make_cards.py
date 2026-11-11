@@ -24,9 +24,9 @@ spec.json 구조
 }
 highlight: 제목 안에서 크림슨으로 강조할 단어(선택)
 cover 추가 옵션:
-  "theme": "midnight"(기본·남색 글로우) | "light"(라벤더 밝은 톤) | "crimson"(와인→크림슨)
-           | "indigo"(인디고 원형 라인) | "split"(위 남색 블록 + 큰 숫자, 아래 흰 바탕 제목)
-  "big":   짧은 숫자·키워드(예: "2029", "22%") — 배경에 크게 깔림(split에선 메인 비주얼)
+  "theme": "midnight"(기본·남색 글로우) | "light"(라벤더 밝은 톤) | "indigo"(인디고 원형 라인)
+           ※ "crimson", "split"은 사용자가 별로라고 해서 사용 금지(코드만 남겨둠)
+  "big":   짧은 숫자·키워드(예: "2029", "22%") — 배경에 크게 깔림
   ※ 전날 표지와 같은 theme 연속 사용 금지(겹치는 건 OK, 연속만 피하기)
 """
 import json, os, sys
@@ -155,7 +155,7 @@ def card(d, box, fill=WHITE, outline=LINE, r=22):
 
 # ---------- slide types ----------
 
-COVER_THEMES = ("midnight", "light", "crimson", "indigo", "split")
+COVER_THEMES = ("midnight", "light", "indigo")
 
 
 def _grad(c1, c2, vertical=True):

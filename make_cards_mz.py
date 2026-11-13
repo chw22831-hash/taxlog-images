@@ -6,7 +6,7 @@
 
 ★ 현재 표준(2026-11-13 사용자 확정): 모든 장에 실제 사진 배경 — 슬라이드마다 "photo"(저장소 경로, 예: photos/unsplash/<id>.jpg)와 "pos"를 지정.
   같은 촬영 세트에서 5장, 장마다 다른 사진. "scene"(폰 화면)·layout "text"/"number"/"split"은 쓰지 않음.
-  로고는 오른쪽 하단 Tax.Log만 자동 표시. 기업 이슈면 슬라이드에 "brand": "SK hynix" 처럼 회사명을 넣으면 반투명 글씨로 깔림. 마지막 장 "foot"에 출처 + "Photo: 작가 / Unsplash" + 면책.
+  로고는 오른쪽 하단 Tax.Log만 자동 표시. 회사명·로고 반투명 오버레이는 쓰지 않음. 마지막 장 "foot"에 출처 + "Photo: 작가 / Unsplash" + 면책.
 
 사용법: python3 make_cards_mz.py spec.json out_dir   → out_dir/01.jpg ... (1080x1350)
 폰트: 저장소 fonts/ 의 Pretendard(SIL OFL 1.1)
@@ -112,11 +112,11 @@ html,body{width:1080px;height:1350px;overflow:hidden;background:#0b0b0d;font-fam
 .vig{position:absolute;inset:0;box-shadow:inset 0 0 220px rgba(0,0,0,.55)}
 .txt{position:absolute;left:84px;right:84px;color:#fff}
 .y{color:#FFD43B}
-.cover h1{font-weight:800;font-size:76px;line-height:1.22;letter-spacing:-0.035em;text-shadow:0 2px 18px rgba(0,0,0,.35)}
+.cover h1{font-weight:800;font-size:88px;line-height:1.22;letter-spacing:-0.035em;text-shadow:0 2px 18px rgba(0,0,0,.35)}
 .foot1{position:absolute;bottom:70px;left:84px;right:84px;display:flex;justify-content:space-between;align-items:center;color:#fff}
 .handle{font-weight:700;font-size:30px;opacity:.92}.handle i{display:inline-block;width:16px;height:16px;border-radius:50%;background:#7b7bd8;margin-right:12px;vertical-align:2px}
 .wm{font-weight:900;font-size:36px;letter-spacing:-0.03em}
-.body h2{font-weight:800;font-size:60px;line-height:1.25;letter-spacing:-0.035em;margin-bottom:40px}
+.body h2{font-weight:800;font-size:70px;line-height:1.25;letter-spacing:-0.035em;margin-bottom:40px}
 .body h3{font-weight:700;font-size:37px;margin-bottom:16px}
 .body p{font-weight:400;font-size:33px;line-height:1.62;color:#ececec}
 .body p b{font-weight:700;color:#fff}
@@ -202,7 +202,7 @@ def page(s, i, date):
               f'<div style="position:absolute;inset:0;background:rgba(0,0,0,{dim})"></div>'
               f'<div style="position:absolute;inset:0;background:{grad}"></div>')
         brand = ""
-        if s.get("brand"):  # 기업 이슈: 회사 이름을 반투명 글씨로 은은하게(로고 이미지는 쓰지 않음)
+        if False and s.get("brand"):  # 사용 안 함(사용자 결정 2026-11-13: 회사명·로고 반투명 X) — 기업 이슈: 회사 이름을 반투명 글씨로 은은하게(로고 이미지는 쓰지 않음)
             top = 150 if cover else 210
             brand = (f'<div style="position:absolute;left:0;right:0;top:{top}px;text-align:center;color:#fff;opacity:{s.get("brand_op",0.3)};'
                      f'font-weight:900;font-size:{s.get("brand_size",170)}px;letter-spacing:-0.02em;white-space:nowrap;filter:blur(0.6px);'

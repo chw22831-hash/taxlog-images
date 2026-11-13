@@ -1,0 +1,12 @@
+{
+ "_설명": "게시물 배경 사진 목록. pick_photos.py가 오래 안 쓴 사진부터 골라요. 게시 후 used에 날짜가 기록돼요. 새 사진은 photos/에 넣고 여기 한 줄 추가.",
+ "photos": [
+  {"file": "hanriver-yeouido-sunset.jpg", "tags": ["도시", "여의도", "노을", "경제"], "cover_ok": true, "pos": ["center 30%", "center 45%"], "used": ["2026-11-13-sample"]},
+  {"file": "hanriver-sunset-clouds.jpg", "tags": ["도시", "노을", "구름"], "cover_ok": true, "pos": ["center 20%", "center 70%"], "used": []},
+  {"file": "hanriver-night.jpg", "tags": ["도시", "야경", "퇴근"], "cover_ok": true, "pos": ["center 66%"], "used": []},
+  {"file": "sea-dusk.jpg", "tags": ["바다", "노을", "차분"], "cover_ok": true, "pos": ["center 60%"], "used": []},
+  {"file": "sky-blue-blur.jpg", "tags": ["하늘", "흐림"], "cover_ok": false, "pos": ["60% center"], "used": []},
+  {"file": "flowers-purple.jpg", "tags": ["꽃", "가을"], "cover_ok": false, "pos": ["center"], "used": []},
+  {"file": "poster-wall-trees.jpg", "tags": ["실내", "벽"], "cover_ok": false, "pos": ["center 40%"], "used": []}
+ ]
+}

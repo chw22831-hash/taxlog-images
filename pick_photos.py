@@ -2,8 +2,8 @@
 """게시물 하나에 쓸 배경 사진을 고르고 spec.json에 채워 넣는다.
 
 규칙(사용자 요청 2026-11-13): 사진을 한 게시물에 몰아 쓰지 않는다.
-- 한 게시물에 서로 다른 사진은 최대 2장(표지 1장 + 본문용 1장). 본문 장들은 같은 사진을
-  위치(pos)를 바꿔 잘라 쓰고, 일부 장은 표지 사진을 다시 잘라 쓴다.
+- 한 게시물에 사진은 최대 2장(표지 1장 + 본문 1장)이고, 같은 사진을 두 번 쓰지 않는다(돌려쓴 티 방지).
+  나머지 본문은 사진 없는 레이아웃(number/text, dark·light)으로 섞는다.
 - 가장 오래 안 쓴(또는 한 번도 안 쓴) 사진부터 고르고, 직전 게시물 표지 사진은 표지로 다시 쓰지 않는다.
 - 사용 기록은 photos/catalog.json 의 used 에 날짜로 남긴다.
 
@@ -29,18 +29,16 @@ def main():
     rest = sorted([p for p in ph if p is not cover], key=last)
     body = rest[0]
     spec = json.load(open(spec_p, encoding="utf-8"))
-    # 같은 사진도 장마다 다르게 보이도록 확대·위치를 바꿔 자른다
-    crops = [("cover", None), ("auto 150%", "25% 65%"), ("auto 175%", "80% 55%"), ("auto 135%", "60% 30%")]
-    bi = 0
-    for i, s in enumerate(spec["slides"]):
+    # 사진은 장마다 한 번만: 표지 1장 + 본문 중 사진 레이아웃(photo/split) 1장. 나머지 본문은 사진 없는 레이아웃.
+    used_body = False
+    for s in spec["slides"]:
         if s["type"] == "cover":
             s["photo"], s["pos"], s["size"] = "photos/" + cover["file"], cover["pos"][0], "cover"
-        else:
-            src = body if i % 3 != 0 else cover  # 본문은 주로 두 번째 사진, 가끔 표지 사진을 다르게 잘라 씀
-            size, pos = crops[(bi + (0 if src is body else 2)) % len(crops)]
-            s["photo"] = "photos/" + src["file"]
-            s["size"], s["pos"] = size, pos or src["pos"][-1]
-            bi += 1
+        elif s.get("layout", "photo") in ("photo", "split") and not used_body:
+            s["photo"], s["pos"], s["size"] = "photos/" + body["file"], body["pos"][0], "cover"
+            used_body = True
+        elif s.get("layout", "photo") in ("photo", "split"):
+            s["layout"] = "text"; s.pop("photo", None)
     if not dry:
         json.dump(spec, open(spec_p, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
         for p in (cover, body):

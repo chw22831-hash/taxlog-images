@@ -126,7 +126,59 @@ GRAIN = ('<svg class="grain" width="1080" height="1350"><filter id="n"><feTurbul
          'baseFrequency=".9" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(#n)"/></svg>')
 
 
+LAYOUT_CSS = """
+.L{position:absolute;inset:0}
+.split-ph{position:absolute;left:0;right:0;top:0;height:640px;background-repeat:no-repeat;filter:saturate(.92) contrast(1.04)}
+.split-fade{position:absolute;left:0;right:0;top:440px;height:200px;background:linear-gradient(180deg,rgba(17,17,17,0),#111)}
+.dark{background:#111;color:#fff}
+.light{background:#f3f1ec;color:#141414}
+.light .y{color:#141414;background:linear-gradient(transparent 58%,#FFD43B 58%)}
+.light p{color:#3a3a3a}.light p b{color:#111}
+.light .tag,.light .wm2{color:#141414}
+.blk{position:absolute;left:84px;right:84px}
+.blk h2{font-weight:800;font-size:60px;line-height:1.25;letter-spacing:-0.035em;margin-bottom:34px}
+.blk h3{font-weight:700;font-size:37px;margin-bottom:16px}
+.blk p{font-weight:400;font-size:33px;line-height:1.62}
+.dark .blk p{color:#e6e6e6}.dark .blk p b{color:#fff}
+.num{font-weight:900;font-size:210px;letter-spacing:-0.05em;line-height:1;color:#FFD43B}
+.numcap{font-weight:600;font-size:34px;opacity:.75;margin:22px 0 60px}
+.rule{width:64px;height:6px;background:#FFD43B;margin-bottom:40px}
+.light .rule{background:#141414}
+.fine2{margin-top:30px;font-size:21px;line-height:1.5;opacity:.6}
+"""
+
+
+def layout_page(s):
+    """본문 장 레이아웃을 바꿔 '내용만 바꾼 템플릿' 느낌을 줄인다.
+    layout: "photo"(사진 꽉 채움, 기본) | "split"(위 사진·아래 글) | "text"(사진 없는 글 장, theme dark/light) | "number"(큰 숫자 장)"""
+    lay = s.get("layout", "photo")
+    theme = s.get("theme", "dark")
+    css = CSS.replace("FONTS", FONTS) + LAYOUT_CSS
+    fine = f'<div class="fine2">{fmt(s["foot"])}</div>' if s.get("foot") else ""
+    head = f'<!doctype html><html><head><meta charset="utf-8"><style>{css}</style></head><body>'
+    if lay == "split":
+        ph = os.path.join(ROOT, s["photo"])
+        out = (head + f'<div class="L dark"></div><div class="split-ph" style="background-image:url(\'file://{ph}\');'
+               f'background-position:{s.get("pos","center")};background-size:{s.get("size","cover")}"></div><div class="split-fade"></div>'
+               f'<div class="L dark" style="background:none"><div class="blk" style="top:640px"><h2>{fmt(s["headline"], bold=False)}</h2>'
+               f'<h3>{fmt(s.get("sub",""), bold=False)}</h3><p>{fmt(s.get("body",""))}</p>{fine}</div></div>')
+    elif lay == "number":
+        out = (head + f'<div class="L {theme}"><div class="blk" style="top:50%;transform:translateY(-54%)"><div class="num">{html.escape(s["number"])}</div>'
+               f'<div class="numcap">{fmt(s.get("caption",""), bold=False)}</div><h2>{fmt(s["headline"], bold=False)}</h2>'
+               f'<p>{fmt(s.get("body",""))}</p>{fine}</div>')
+    else:  # text
+        out = (head + f'<div class="L {theme}"><div class="blk" style="top:50%;transform:translateY(-54%)"><div class="rule"></div><h2>{fmt(s["headline"], bold=False)}</h2>'
+               f'<h3>{fmt(s.get("sub",""), bold=False)}</h3><p>{fmt(s.get("body",""))}</p>{fine}</div>')
+    out += GRAIN.replace('class="grain"', 'class="grain" style="opacity:.05"')
+    out += '<div class="tag"><i></i>taxlog_woo</div><div class="wm2">Tax.Log</div>'
+    if lay != "split":
+        out += "</div>"
+    return out + "</body></html>"
+
+
 def page(s, i, date):
+    if s["type"] != "cover" and s.get("layout", "photo") != "photo":
+        return layout_page(s)
     sc = s.get("scene", {})
     cover = s["type"] == "cover"
     blur = 0 if cover else 1.2

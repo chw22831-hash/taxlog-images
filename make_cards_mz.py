@@ -6,7 +6,7 @@
 
 ★ 현재 표준(2026-11-13 사용자 확정): 모든 장에 실제 사진 배경 — 슬라이드마다 "photo"(저장소 경로, 예: photos/unsplash/<id>.jpg)와 "pos"를 지정.
   같은 촬영 세트에서 5장, 장마다 다른 사진. "scene"(폰 화면)·layout "text"/"number"/"split"은 쓰지 않음.
-  로고는 오른쪽 하단 Tax.Log만 자동 표시. 마지막 장 "foot"에 출처 + "Photo: 작가 / Unsplash" + 면책.
+  로고는 오른쪽 하단 Tax.Log만 자동 표시. 기업 이슈면 슬라이드에 "brand": "SK hynix" 처럼 회사명을 넣으면 반투명 글씨로 깔림. 마지막 장 "foot"에 출처 + "Photo: 작가 / Unsplash" + 면책.
 
 사용법: python3 make_cards_mz.py spec.json out_dir   → out_dir/01.jpg ... (1080x1350)
 폰트: 저장소 fonts/ 의 Pretendard(SIL OFL 1.1)
@@ -201,7 +201,13 @@ def page(s, i, date):
         bg = (f'<div style="position:absolute;inset:0;background:url(\'{ph}\') {pos}/{s.get("size","cover")} no-repeat;filter:saturate(.92) contrast(1.04)"></div>'
               f'<div style="position:absolute;inset:0;background:rgba(0,0,0,{dim})"></div>'
               f'<div style="position:absolute;inset:0;background:{grad}"></div>')
-        out = f'<!doctype html><html><head><meta charset="utf-8"><style>{css}</style></head><body>{bg}{GRAIN}<div class="vig"></div>'
+        brand = ""
+        if s.get("brand"):  # 기업 이슈: 회사 이름을 반투명 글씨로 은은하게(로고 이미지는 쓰지 않음)
+            top = 150 if cover else 210
+            brand = (f'<div style="position:absolute;left:0;right:0;top:{top}px;text-align:center;color:#fff;opacity:{s.get("brand_op",0.3)};'
+                     f'font-weight:900;font-size:{s.get("brand_size",170)}px;letter-spacing:-0.02em;white-space:nowrap;filter:blur(0.6px);'
+                     f'text-shadow:0 0 30px rgba(255,255,255,.25)">{html.escape(s["brand"])}</div>')
+        out = f'<!doctype html><html><head><meta charset="utf-8"><style>{css}</style></head><body>{bg}{brand}{GRAIN}<div class="vig"></div>'
     else:
         out = f'<!doctype html><html><head><meta charset="utf-8"><style>{css}</style></head><body><div class="bg"></div>{bok}{scene_html(sc)}<div class="shade"></div>{GRAIN}<div class="vig"></div>'
     if cover:

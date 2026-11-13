@@ -6,7 +6,8 @@
 
 ★ 현재 표준(2026-11-13 사용자 확정): 모든 장에 실제 사진 배경 — 슬라이드마다 "photo"(저장소 경로, 예: photos/unsplash/<id>.jpg)와 "pos"를 지정.
   같은 촬영 세트에서 5장, 장마다 다른 사진. "scene"(폰 화면)·layout "text"/"number"/"split"은 쓰지 않음.
-  로고는 오른쪽 하단 Tax.Log만 자동 표시. 회사명·로고 반투명 오버레이는 쓰지 않음. 마지막 장 "foot"에 출처 + "Photo: 작가 / Unsplash" + 면책.
+  로고는 오른쪽 하단 Tax.Log만 자동 표시. 회사명·로고 반투명 오버레이는 쓰지 않음.
+  마지막 장에 "follow": "이런 소식 매일 받아보려면 [@taxlog_woo] 팔로우" 같은 팔로우 유도 한 줄(문구는 매번 다르게). 마지막 장 "foot"에 출처 + "Photo: 작가 / Unsplash" + 면책.
 
 사용법: python3 make_cards_mz.py spec.json out_dir   → out_dir/01.jpg ... (1080x1350)
 폰트: 저장소 fonts/ 의 Pretendard(SIL OFL 1.1)
@@ -216,6 +217,9 @@ def page(s, i, date):
         out += '<div class="wm2" style="bottom:66px;font-size:36px">Tax.Log</div>'  # 로고는 오른쪽 하단에만
     else:
         fine = f'<div class="fine">{fmt(s["foot"])}</div>' if s.get("foot") else ""
+        if s.get("follow"):  # 마지막 장 팔로우 유도 한 줄(사용자 요청 2026-11-13). [ ]는 노란 강조
+            fine = (f'<div style="margin-top:36px;padding-top:26px;border-top:1px solid rgba(255,255,255,.22);'
+                    f'font-weight:700;font-size:34px;line-height:1.45;color:#fff">{fmt(s["follow"], bold=False)}</div>') + fine
         bottom = 130
         out += (f'<div class="txt body" style="bottom:{bottom}px"><h2>{fmt(s["headline"], bold=False)}</h2>'
                 f'<h3>{fmt(s.get("sub",""), bold=False)}</h3><p>{fmt(s.get("body",""))}</p>{fine}</div>')

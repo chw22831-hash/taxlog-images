@@ -4,6 +4,10 @@
 레퍼런스: 사진/폰 화면을 꽉 채운 배경 + 아래쪽 어두운 그라데이션 + 큰 흰 글씨(한 줄만 노란 강조)
 + 기사체 본문. 라벨·뱃지·번호 카드·이모지 없이 '뉴스 계정'처럼 보이게 만든다.
 
+★ 현재 표준(2026-11-13 사용자 확정): 모든 장에 실제 사진 배경 — 슬라이드마다 "photo"(저장소 경로, 예: photos/unsplash/<id>.jpg)와 "pos"를 지정.
+  같은 촬영 세트에서 5장, 장마다 다른 사진. "scene"(폰 화면)·layout "text"/"number"/"split"은 쓰지 않음.
+  로고는 오른쪽 하단 Tax.Log만 자동 표시. 마지막 장 "foot"에 출처 + "Photo: 작가 / Unsplash" + 면책.
+
 사용법: python3 make_cards_mz.py spec.json out_dir   → out_dir/01.jpg ... (1080x1350)
 폰트: 저장소 fonts/ 의 Pretendard(SIL OFL 1.1)
 

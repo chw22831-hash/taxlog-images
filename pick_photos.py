@@ -29,14 +29,17 @@ def main():
     rest = sorted([p for p in ph if p is not cover], key=last)
     body = rest[0]
     spec = json.load(open(spec_p, encoding="utf-8"))
+    # 같은 사진도 장마다 다르게 보이도록 확대·위치를 바꿔 자른다
+    crops = [("cover", None), ("auto 150%", "25% 65%"), ("auto 175%", "80% 55%"), ("auto 135%", "60% 30%")]
     bi = 0
     for i, s in enumerate(spec["slides"]):
         if s["type"] == "cover":
-            s["photo"], s["pos"] = "photos/" + cover["file"], cover["pos"][0]
+            s["photo"], s["pos"], s["size"] = "photos/" + cover["file"], cover["pos"][0], "cover"
         else:
             src = body if i % 3 != 0 else cover  # 본문은 주로 두 번째 사진, 가끔 표지 사진을 다르게 잘라 씀
+            size, pos = crops[(bi + (0 if src is body else 2)) % len(crops)]
             s["photo"] = "photos/" + src["file"]
-            s["pos"] = src["pos"][bi % len(src["pos"])] if src is body else src["pos"][-1]
+            s["size"], s["pos"] = size, pos or src["pos"][-1]
             bi += 1
     if not dry:
         json.dump(spec, open(spec_p, "w", encoding="utf-8"), ensure_ascii=False, indent=1)

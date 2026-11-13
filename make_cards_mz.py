@@ -142,7 +142,7 @@ def page(s, i, date):
         grad = (f"linear-gradient(180deg,rgba(0,0,0,.18) 0%,rgba(0,0,0,0) 14%,rgba(0,0,0,0) {top}%,"
                 f"rgba(0,0,0,.72) {top+20}%,rgba(0,0,0,.9) 100%)")
         css = css.replace("inset 0 0 220px rgba(0,0,0,.55)", "inset 0 0 160px rgba(0,0,0,.28)").replace("opacity:.13", "opacity:.08")
-        bg = (f'<div style="position:absolute;inset:0;background:url(\'file://{ph}\') {pos}/cover no-repeat;filter:saturate(.92) contrast(1.04)"></div>'
+        bg = (f'<div style="position:absolute;inset:0;background:url(\'file://{ph}\') {pos}/{s.get("size","cover")} no-repeat;filter:saturate(.92) contrast(1.04)"></div>'
               f'<div style="position:absolute;inset:0;background:rgba(0,0,0,{dim})"></div>'
               f'<div style="position:absolute;inset:0;background:{grad}"></div>')
         out = f'<!doctype html><html><head><meta charset="utf-8"><style>{css}</style></head><body>{bg}{GRAIN}<div class="vig"></div>'

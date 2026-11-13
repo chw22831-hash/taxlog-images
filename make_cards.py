@@ -26,7 +26,8 @@ highlight: 제목 안에서 크림슨으로 강조할 단어(선택)
 cover 추가 옵션:
   "theme": "midnight"(기본·남색 글로우) | "light"(라벤더 밝은 톤) | "indigo"(인디고 원형 라인)
            ※ "crimson", "split"은 사용자가 별로라고 해서 사용 금지(코드만 남겨둠)
-  "big":   짧은 숫자·키워드(예: "2029", "22%") — 배경에 크게 깔림
+  "big":   사용 금지 — 사용자가 표지 배경의 큰 숫자를 싫어해서 지정해도 그려지지 않음(2026-11-13)
+           (본문·제목 안의 숫자는 OK, 표지 하단 날짜는 유지)
   ※ 전날 표지와 같은 theme 연속 사용 금지(겹치는 건 OK, 연속만 피하기)
 """
 import json, os, sys
@@ -205,6 +206,7 @@ def _big(d, s, x_right, y, color):
 
 
 def s_cover(s, i, n, date):
+    s = {k: v for k, v in s.items() if k != "big"}  # 배경 큰 숫자 사용 안 함(사용자 요청 2026-11-13)
     theme = s.get("theme", "midnight")
     if theme == "light":
         im = Image.new("RGB", (W, H), LAV2)

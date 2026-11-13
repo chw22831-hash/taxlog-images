@@ -187,14 +187,14 @@ def page(s, i, date):
                   for x, y, r, c in [(40, 120, 260, "#e9c48a"), (860, 60, 200, "#fff3d6"), (900, 700, 300, "#8a7a66")])
     css = CSS.replace("FONTS", FONTS).replace("BLUR", str(blur)).replace("SHADE0", str(shade[0])).replace("SHADE1", str(shade[1]))
     if s.get("photo"):  # 실사진 배경(저장소 photos/ 안의 파일). 폰 화면 대신 사용 — 기본 방식
-        ph = os.path.join(ROOT, s["photo"])
+        ph = s["photo"] if s["photo"].startswith("http") else "file://" + os.path.join(ROOT, s["photo"])
         pos = s.get("pos", "center")
         dim = s.get("dim", 0.0)
         top = s.get("clear", 50 if cover else 34)  # 이 높이(%)까지는 사진이 그대로 보임
         grad = (f"linear-gradient(180deg,rgba(0,0,0,.18) 0%,rgba(0,0,0,0) 14%,rgba(0,0,0,0) {top}%,"
                 f"rgba(0,0,0,.72) {top+20}%,rgba(0,0,0,.9) 100%)")
         css = css.replace("inset 0 0 220px rgba(0,0,0,.55)", "inset 0 0 160px rgba(0,0,0,.28)").replace("opacity:.13", "opacity:.08")
-        bg = (f'<div style="position:absolute;inset:0;background:url(\'file://{ph}\') {pos}/{s.get("size","cover")} no-repeat;filter:saturate(.92) contrast(1.04)"></div>'
+        bg = (f'<div style="position:absolute;inset:0;background:url(\'{ph}\') {pos}/{s.get("size","cover")} no-repeat;filter:saturate(.92) contrast(1.04)"></div>'
               f'<div style="position:absolute;inset:0;background:rgba(0,0,0,{dim})"></div>'
               f'<div style="position:absolute;inset:0;background:{grad}"></div>')
         out = f'<!doctype html><html><head><meta charset="utf-8"><style>{css}</style></head><body>{bg}{GRAIN}<div class="vig"></div>'

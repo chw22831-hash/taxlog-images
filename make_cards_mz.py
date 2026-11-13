@@ -116,7 +116,7 @@ html,body{width:1080px;height:1350px;overflow:hidden;background:#0b0b0d;font-fam
 .body h3{font-weight:700;font-size:37px;margin-bottom:16px}
 .body p{font-weight:400;font-size:33px;line-height:1.62;color:#ececec}
 .body p b{font-weight:700;color:#fff}
-.wm2{position:absolute;bottom:56px;left:0;right:0;text-align:center;color:#fff;font-weight:900;font-size:32px;opacity:.95}
+.wm2{position:absolute;bottom:56px;right:84px;text-align:right;color:#fff;font-weight:900;font-size:32px;opacity:.95}
 .tag{position:absolute;top:56px;left:0;right:0;text-align:center;color:#fff;font-weight:600;font-size:26px;opacity:.75}
 .tag i{display:inline-block;width:13px;height:13px;border-radius:50%;background:#7b7bd8;margin-right:10px;vertical-align:1px}
 .fine{margin-top:34px;font-size:21px;line-height:1.5;color:#a9a9a9}
@@ -170,7 +170,7 @@ def layout_page(s):
         out = (head + f'<div class="L {theme}"><div class="blk" style="top:50%;transform:translateY(-54%)"><div class="rule"></div><h2>{fmt(s["headline"], bold=False)}</h2>'
                f'<h3>{fmt(s.get("sub",""), bold=False)}</h3><p>{fmt(s.get("body",""))}</p>{fine}</div>')
     out += GRAIN.replace('class="grain"', 'class="grain" style="opacity:.05"')
-    out += '<div class="tag"><i></i>taxlog_woo</div><div class="wm2">Tax.Log</div>'
+    out += '<div class="wm2">Tax.Log</div>'  # 로고는 오른쪽 하단에만(사용자 요청 2026-11-13)
     if lay != "split":
         out += "</div>"
     return out + "</body></html>"
@@ -203,9 +203,8 @@ def page(s, i, date):
     if cover:
         lines = "<br>".join(fmt(l, bold=False) for l in s["lines"])
         out += f'<div class="txt cover" style="bottom:230px"><h1>{lines}</h1></div>'
-        out += '<div class="foot1"><span class="handle"><i></i>taxlog_woo</span><span class="wm">Tax.Log</span></div>'
+        out += '<div class="wm2" style="bottom:66px;font-size:36px">Tax.Log</div>'  # 로고는 오른쪽 하단에만
     else:
-        out += '<div class="tag"><i></i>taxlog_woo</div>'
         fine = f'<div class="fine">{fmt(s["foot"])}</div>' if s.get("foot") else ""
         bottom = 130
         out += (f'<div class="txt body" style="bottom:{bottom}px"><h2>{fmt(s["headline"], bold=False)}</h2>'

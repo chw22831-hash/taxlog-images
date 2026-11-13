@@ -3,7 +3,7 @@
  "slides": [
   {
    "type": "cover",
-   "photo": "https://images.unsplash.com/photo-1769794371055-54436b54577e?w=1600&q=80&fm=jpg&fit=max",
+   "photo": "photos/unsplash/1769794371055-54436b54577e.jpg",
    "pos": "center 40%",
    "lines": [
     "월급은 찔끔 올랐는데",
@@ -13,7 +13,7 @@
   },
   {
    "type": "body",
-   "photo": "https://images.unsplash.com/photo-1769794370990-614f765fa360?w=1600&q=80&fm=jpg&fit=max",
+   "photo": "photos/unsplash/1769794370990-614f765fa360.jpg",
    "pos": "40% center",
    "headline": "근로소득세 68.4조, [역대 최대]",
    "sub": "증가율, 전체 국세의 두 배를 넘었다",
@@ -21,7 +21,7 @@
   },
   {
    "type": "body",
-   "photo": "https://images.unsplash.com/photo-1769794370964-78412732f1cd?w=1600&q=80&fm=jpg&fit=max",
+   "photo": "photos/unsplash/1769794370964-78412732f1cd.jpg",
    "pos": "55% center",
    "headline": "35% 구간은 [2008년 그대로]",
    "sub": "기본공제 150만 원도 2009년부터 같다",
@@ -29,7 +29,7 @@
   },
   {
    "type": "body",
-   "photo": "https://images.unsplash.com/photo-1769794371007-9bf419217727?w=1600&q=80&fm=jpg&fit=max",
+   "photo": "photos/unsplash/1769794371007-9bf419217727.jpg",
    "pos": "45% center",
    "headline": "물가연동, 의견은 [엇갈린다]",
    "sub": "11월 13일 TF 첫 회의 의제에선 빠졌다",
@@ -37,7 +37,7 @@
   },
   {
    "type": "body",
-   "photo": "https://images.unsplash.com/photo-1769794371008-954a71d95ce8?w=1600&q=80&fm=jpg&fit=max",
+   "photo": "photos/unsplash/1769794371008-954a71d95ce8.jpg",
    "pos": "50% center",
    "headline": "같은 공제도 [구간 따라] 다르다",
    "sub": "기준은 연봉이 아니라 과세표준",

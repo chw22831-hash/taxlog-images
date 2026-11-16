@@ -1,0 +1,23 @@
+{
+ "bgm": {"seed": 20261116, "key": "C"},
+ "scene_sec": 5.6,
+ "xfade": 0.5,
+ "scenes": [
+  {"photo": "photos/unsplash/1637070906584-d791e62c21b8.jpg", "cover": true,
+   "lines": ["美 물가 예상 웃돈 주", "국채 10년물", "[연 5.1%대]", "[한은은 26일 결정]"]},
+  {"photo": "photos/unsplash/1637070855637-7c5a3d842cea.jpg",
+   "headline": "美 물가,\n[예상치 웃돌아]",
+   "points": ["10월 CPI 전월 대비 **0.4%** 상승\n(시장 예상 0.3%)", "근원 CPI도 **0.3%**, 3개월 연속 0.3%"]},
+  {"photo": "photos/unsplash/1637073758267-4033a4ca9de9.jpg",
+   "headline": "금리선물,\n[12월 인상 100%]",
+   "points": ["CME 페드워치 13일 기준", "실제 결정은 12월 8~9일 FOMC", "미 기준금리 현재 **연 3.75~4.00%**"]},
+  {"photo": "photos/unsplash/1637073760127-1c914f00d3e1.jpg",
+   "headline": "美 10년물,\n[연 5.1%대]",
+   "points": ["13일(현지시간) **연 5.147%** 마감", "2년물은 10일 하루 0.19%p 넘게 올라"]},
+  {"photo": "photos/unsplash/1637070875173-1ecab5fff748.jpg",
+   "headline": "한은,\n[26일 금리 결정]",
+   "points": ["현재 기준금리 **연 3.00%**", "9월 은행 신규 주담대 평균 **연 4.88%**"],
+   "follow": "금리 소식, 놓치지 않게 정리해요\n[@taxlog_woo] 팔로우",
+   "foot": "출처: 미 노동부·한국은행, 아주경제·파이낸셜뉴스·뉴스핌·한국일보·데일리안·세계일보\nPhoto: Ethan Brooke / Unsplash · Music: Tax.Log 자체 제작\n일반 정보 제공 목적이며 투자 권유가 아닙니다."}
+ ]
+}

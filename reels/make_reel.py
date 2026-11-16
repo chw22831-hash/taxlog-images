@@ -102,17 +102,13 @@ def main():
                 pg.screenshot(path=f"{tmp}/t{i}{part}.png", omit_background=True)
         b.close()
 
-    # 장면별 클립: 천천히 확대(켄 번스) + 제목 페이드인 + 포인트 늦게 페이드인
+    # 장면별 클립: 사진은 고정(확대·축소 없음, 2026-11-16 사용자 요청) + 제목 페이드인 + 포인트 늦게 페이드인
     clips = []
-    frames = int(S * FPS)
     for i, sc in enumerate(scenes):
         photo = os.path.join(ROOT, sc["photo"])
-        zin = i % 2 == 0  # 장면마다 확대/축소 번갈아
-        z = f"if(eq(on,0),1.0,min(zoom+0.0006,1.10))" if zin else f"if(eq(on,0),1.10,max(zoom-0.0006,1.0))"
         clip = f"{tmp}/c{i}.mp4"
         fc = (
-            f"[0:v]scale=2160:3840:force_original_aspect_ratio=increase,crop=2160:3840,"
-            f"zoompan=z='{z}':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':d={frames}:s={W}x{H}:fps={FPS},"
+            f"[0:v]scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H},fps={FPS},"
             f"eq=brightness=-0.03:saturation=0.95[bg];"
             f"[1:v]format=rgba,fade=t=in:st=0.25:d=0.6:alpha=1[a];"
             f"[2:v]format=rgba,fade=t=in:st={1.3 if not sc.get('cover') else 0}:d=0.6:alpha=1[b];"

@@ -3,6 +3,7 @@
 > "그림은 B급, 정보는 A급." 진지한 경제뉴스를 설명하는데 등장인물은 옛날 저사양 FPS 게임에서 튀어나온 것 같은 웃기고 투박한 3D 캐릭터.
 
 ## 1. 핵심 스타일
+(2026-11-16 사용자 보완) 미니서든어택처럼 큰 머리의 SD(약 2.5등신) 캐릭터 + 픽셀이 그대로 보이는 저해상도 화면이 기준.
 초창기 온라인 FPS(미니서든어택/X Operations 시절) 특유의 저폴리곤 3D 게임 그래픽. 현대적인 고퀄리티 일러스트가 아니라 2000년대 초반 PC 게임의 투박하고 어색한 3D 그래픽.
 
 ## 2. 그래픽 필수 설정
@@ -25,8 +26,9 @@ Low Poly 3D Character · Retro FPS Game Graphics · Early 2000s PC Game Aestheti
 - 웃음은 캐릭터의 어색함과 상황의 부조화에서.
 
 ## 구현 (자동 작업용)
-- 렌더러: `python3 bgrade/render.py scene.json out.jpg [W H]` (기본 1080x1350). headless Chromium + three.js(bgrade/vendor, MIT)로 저해상도로 그린 뒤 확대.
+- 렌더러: `python3 bgrade/render.py scene.json out.jpg [W H]` (기본 1080x1350). headless Chromium + three.js(bgrade/vendor, MIT)로 1/4 해상도로 그린 뒤 픽셀 그대로(NEAREST) 확대. 캐릭터는 기본 SD 비율("sd": false면 일반 비율 — 쓰지 않음).
 - scene.json: `map`(alley·street·warehouse·rooftop), `cam`{pos,target,fov}, `signs`[{text,arrow:"up"/"down",bg,pos,w,size}], `chars`[{pos,ry,expr,pose,outfit{type:suit/hoodie/vest,top,shirt,tie,pants},skin,hair,hairStyle:side/long/bald,cap,prop,propHand,headTilt}], `items`[{type,pos,ry,scale}].
+  - sd(기본 true) · `chars[].helmet`(색) 추가 가능
   - expr: neutral·shock·happy·smug·sad·cry·angry / pose: idle·hands_up·cheer·point·facepalm·hold·shrug·head_grab·wallet_empty / prop: money·phone·briefcase·chart·receipt
-- 카드 글이 아래쪽 약 45%를 덮으므로 캐릭터 얼굴은 화면 위쪽 절반에 오게 카메라를 잡는다(예: cam.pos y≈1.9, target y≈2.75).
+- 카드 글이 아래쪽 약 45%를 덮으므로 캐릭터 얼굴은 화면 위쪽 절반에 오게 카메라를 잡는다(SD 기준 예: cam.pos [0.2,1.2,6.2], target [0.2,1.55,0], fov 50 — 캐릭터는 z 0~-1 근처, 간판은 y 4~4.6).
 - 렌더한 이미지를 make_cards_mz.py spec의 "photo"로 넣는다. 예시: samples/bgrade-v1/.

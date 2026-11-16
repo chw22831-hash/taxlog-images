@@ -9,14 +9,14 @@
   renderer.setSize(RW, RH);
   document.body.appendChild(renderer.domElement);
   const scene = new THREE.Scene();
-  const sky = S.sky || ["#8fb3cf", "#d9e2e6"];
+  const sky = S.sky || ["#5fa9ea", "#d4ecfb"];
   scene.background = gradTex(sky[0], sky[1]);
   scene.fog = new THREE.Fog(S.fog || "#b9c4c8", 14, 46);
   const cam = new THREE.PerspectiveCamera(S.cam?.fov || 55, RW / RH, 0.1, 200);
   const cp = S.cam?.pos || [0, 2.2, 6.2], ct = S.cam?.target || [0, 1.5, 0];
   cam.position.set(...cp); cam.lookAt(...ct);
   // 밋밋한 게임 엔진 조명: 앰비언트 + 방향광 하나, 그림자 없음
-  scene.add(new THREE.AmbientLight(0xffffff, 0.62));
+  scene.add(new THREE.AmbientLight(0xffffff, 0.78));
   const sun = new THREE.DirectionalLight(0xfff2dc, 0.75); sun.position.set(4, 9, 6); scene.add(sun);
 
   // ---------- 텍스처 ----------
@@ -144,21 +144,23 @@
   };
   function makeChar(c) {
     const root = new THREE.Group(); const sc = c.scale || 1;
+    // SD(미니 FPS식 2.5등신) 기본. S.sd === false 면 일반 비율
+    const D = S.sd === false ? { leg: 1.3, lw: 1, torso: 1.15, head: 1, arm: 0.62, hand: 1 } : { leg: 0.62, lw: 1.25, torso: 0.82, head: 1.95, arm: 0.4, hand: 1.5 };
     const o = c.outfit || { type: "suit", top: "#262b36" };
     const skin = c.skin || "#d9a77f", hair = c.hair || "#1b1814";
     const clothM = lam({ map: outfitTex(o) }), sleeveM = col(o.top || "#262b36"), pantsM = col(o.pants || "#1f2128");
     const skinM = col(skin), shoeM = col(o.shoes || "#141414"), hairM = col(hair);
     // 다리
     [-0.2, 0.2].forEach((x, i) => {
-      const leg = seg(0.17, 0.13, 1.3, pantsM, 5); leg.position.set(x, 1.3, 0); leg.rotation.z = (i ? -1 : 1) * (c.legSpread || 0.05); root.add(leg);
-      const shoe = new THREE.Mesh(new THREE.BoxGeometry(0.26, 0.16, 0.46), shoeM); shoe.position.set(x * 1.15, 0.08, 0.08); root.add(shoe);
+      const leg = seg(0.17 * D.lw, 0.13 * D.lw, D.leg, pantsM, 5); leg.position.set(x, D.leg, 0); leg.rotation.z = (i ? -1 : 1) * (c.legSpread || 0.05); root.add(leg);
+      const shoe = new THREE.Mesh(new THREE.BoxGeometry(0.26 * D.lw, 0.16 * D.lw, 0.46 * D.lw), shoeM); shoe.position.set(x * 1.15, 0.08, 0.08); root.add(shoe);
     });
     // 몸통(위가 넓은 각진 사다리꼴)
-    const torsoG = new THREE.CylinderGeometry(0.46, 0.36, 1.15, 6, 1, false, -Math.PI); const torso = new THREE.Mesh(torsoG, clothM);
-    torso.scale.z = 0.62; torso.position.y = 1.88; root.add(torso);
+    const torsoG = new THREE.CylinderGeometry(0.46, 0.38, D.torso, 6, 1, false, -Math.PI); const torso = new THREE.Mesh(torsoG, clothM);
+    torso.scale.z = 0.66; torso.position.y = D.leg + D.torso / 2; root.add(torso);
     // 목·머리 (머리는 6각 기둥 + 위아래 뚜껑: 복셀이 아닌 구형 FPS 모델 느낌)
-    const neck = seg(0.11, 0.12, 0.16, skinM, 5); neck.position.y = 2.62; root.add(neck);
-    const head = new THREE.Group(); head.position.y = 2.95 + (c.headLift || 0);
+    const neck = seg(0.11, 0.12, 0.16, skinM, 5); neck.position.y = D.leg + D.torso + 0.12; root.add(neck);
+    const head = new THREE.Group(); head.position.y = D.leg + D.torso + 0.12 + 0.26 * D.head + (c.headLift || 0); head.scale.setScalar(D.head);
     const hg = new THREE.CylinderGeometry(0.29, 0.25, 0.52, 7, 1, false, -Math.PI); const hm = new THREE.Mesh(hg, [lam({ map: faceTex(skin, c.expr, hair) }), hairM, skinM]);
     hm.scale.set(c.headW || 1, 1, 0.92); head.add(hm);
     const crown = new THREE.Mesh(new THREE.CylinderGeometry(0.2, 0.31, 0.16, 7), hairM); crown.position.y = 0.31; crown.scale.z = 0.95; head.add(crown);
@@ -166,20 +168,22 @@
     if (c.hairStyle === "long") { const h3 = new THREE.Mesh(new THREE.CylinderGeometry(0.3, 0.33, 0.6, 7), hairM); h3.position.set(0, -0.08, -0.08); h3.scale.z = 0.8; head.add(h3); }
     if (c.hairStyle === "bald") crown.material = skinM;
     if (c.glasses) { const gl = new THREE.Mesh(new THREE.BoxGeometry(0.42, 0.07, 0.05), col("#111")); gl.position.set(0, 0.05, 0.27); head.add(gl); }
+    if (c.helmet) { const hm2 = new THREE.Mesh(new THREE.CylinderGeometry(0.24, 0.34, 0.22, 8), col(c.helmet)); hm2.position.y = 0.3; head.add(hm2); }
     if (c.cap) { const cp = new THREE.Mesh(new THREE.CylinderGeometry(0.31, 0.31, 0.14, 7), col(c.cap)); cp.position.y = 0.33; head.add(cp); const br = new THREE.Mesh(new THREE.BoxGeometry(0.4, 0.04, 0.3), col(c.cap)); br.position.set(0, 0.28, 0.3); head.add(br); }
     head.rotation.set(c.headTilt?.[0] || 0, c.headTilt?.[1] || 0, c.headTilt?.[2] || 0);
     root.add(head);
     // 팔
-    const P = POSES[c.pose || "idle"] || POSES.idle;
+    const POSES_SD = { head_grab: { l: [-0.25, 0, 2.55], r: [-0.25, 0, -2.55], le: 0, re: 0, lez: 1.1, rez: -1.1 }, facepalm: { l: [0.1, 0, 0.2], r: [-1.2, 0, -2.2], le: 0.2, re: 0, rez: -0.6 } };
+    const P = (S.sd !== false && POSES_SD[c.pose]) || POSES[c.pose || "idle"] || POSES.idle;
     [["l", 1], ["r", -1]].forEach(([k, s]) => {
-      const sh = new THREE.Group(); sh.position.set(0.55 * s, 2.36, 0);
-      const ua = seg(0.13, 0.11, 0.62, sleeveM, 5); sh.add(ua);
-      const el = new THREE.Group(); el.position.y = -0.62; sh.add(el);
-      const fa = seg(0.11, 0.09, 0.56, sleeveM, 5); el.add(fa);
-      const hand = new THREE.Mesh(new THREE.BoxGeometry(0.15, 0.2, 0.12), skinM); hand.position.y = -0.66; el.add(hand);
+      const sh = new THREE.Group(); sh.position.set(0.53 * s, D.leg + D.torso - 0.08, 0);
+      const ua = seg(0.13, 0.11, D.arm, sleeveM, 5); sh.add(ua);
+      const el = new THREE.Group(); el.position.y = -D.arm; sh.add(el);
+      const fa = seg(0.11, 0.09, D.arm * 0.9, sleeveM, 5); el.add(fa);
+      const hand = new THREE.Mesh(new THREE.BoxGeometry(0.15 * D.hand, 0.2 * D.hand, 0.13 * D.hand), skinM); hand.position.y = -D.arm * 0.9 - 0.08 * D.hand; el.add(hand);
       sh.rotation.set(P[k][0], P[k][1], P[k][2]); el.rotation.x = -(k === "l" ? P.le : P.re); el.rotation.z = (k === "l" ? P.lez : P.rez) || 0;
       root.add(sh);
-      if (c.prop && ((c.propHand || "r") === k)) el.add(makeProp(c.prop, -0.78));
+      if (c.prop && ((c.propHand || "r") === k)) el.add(makeProp(c.prop, -D.arm * 0.9 - 0.2));
     });
     root.position.set(...(c.pos || [0, 0, 0])); root.rotation.y = c.ry || 0; root.scale.setScalar(sc);
     scene.add(root);

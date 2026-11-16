@@ -18,8 +18,8 @@ def main():
     out = sys.argv[2]
     W = int(sys.argv[3]) if len(sys.argv) > 3 else 1080
     H = int(sys.argv[4]) if len(sys.argv) > 4 else 1350
-    spec.setdefault("render_w", round(W / 2.5))
-    spec.setdefault("render_h", round(H / 2.5))
+    spec.setdefault("render_w", round(W / 4))
+    spec.setdefault("render_h", round(H / 4))
     three = open(os.path.join(HERE, "vendor", "three.min.js")).read()
     scene_js = open(os.path.join(HERE, "scene.js")).read()
     html = ("<html><body style='margin:0;background:#000'>"
@@ -39,8 +39,8 @@ def main():
             print("JS errors:", errs)
     im = Image.open(tmp).convert("RGB")
     # 옛날 게임 화면: 살짝 뭉개진 확대 + 약한 색 단계 감소
-    im = im.resize((W, H), Image.BILINEAR).filter(ImageFilter.SMOOTH)
-    im = im.quantize(colors=96, dither=Image.Dither.NONE).convert("RGB")
+    im = im.quantize(colors=64, dither=Image.Dither.NONE).convert("RGB")
+    im = im.resize((W, H), Image.NEAREST)  # 픽셀이 그대로 보이게(미니 FPS 저해상도 스크린샷 느낌)
     im.save(out, quality=88)
     os.remove(tmp)
     print(out)

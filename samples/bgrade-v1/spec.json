@@ -1,1 +1,15 @@
-{"date":"2026.11.15","slides":[{"type":"cover","photo":"samples/bgrade-v1/bg1.jpg","pos":"center","lines":["젠슨 황 떠난 엔비디아,","17일 첫 실적 발표","[19일엔 앤트로픽 상장]"]}]}
+{
+ "date": "2026.11.15",
+ "slides": [
+  {
+   "type": "cover",
+   "photo": "samples/bgrade-v1/bg1.jpg",
+   "pos": "center",
+   "lines": [
+    "젠슨 황 떠난 엔비디아,",
+    "17일 첫 실적 발표",
+    "[19일엔 앤트로픽 상장]"
+   ]
+  }
+ ]
+}

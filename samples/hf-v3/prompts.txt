@@ -1,0 +1,3 @@
+FLUX.1-Krea-dev 896x1120, seed 625174005 → bgrade/retro.py factor 3, 채도 0.9
+Authentic in-game screenshot from a 1999 PC tactical shooter, Half-Life and early Counter-Strike era 3D graphics, 640x480. A realistic adult man character model with about 800 polygons: faceted angular arms and torso, small head with a blurry photo face texture, fictional businessman in dark navy suit and red tie, surprised, holding a small green circuit chip. Muddy low resolution textures, simple vertex lighting, slight fog. Wooden plank house, beige walls, sand floor, pale blue sky.
+메모: "blocky" 넣으면 로블록스처럼, "chibi" 넣으면 동물의숲처럼 나옴 → 쓰지 않기. 무료 ZeroGPU 한도는 이날 약 6장 생성 후 소진.

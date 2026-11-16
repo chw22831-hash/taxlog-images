@@ -17,7 +17,8 @@ if w / h > r:
 else:
     nh = int(w / r); im = im.crop((0, (h - nh) // 2, w, (h - nh) // 2 + nh))
 small = im.resize((int(W / f), int(H / f)), Image.BOX)
-small = ImageEnhance.Color(small).enhance(1.08)
+small = ImageEnhance.Color(small).enhance(float(sys.argv[6]) if len(sys.argv) > 6 else 0.9)
+small = ImageEnhance.Contrast(small).enhance(0.95)
 small = small.quantize(colors=128, dither=Image.Dither.NONE).convert("RGB")
 small.resize((W, H), Image.NEAREST).save(out, quality=90)
 print(out)

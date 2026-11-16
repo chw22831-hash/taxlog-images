@@ -6,7 +6,7 @@
 
 reel.json
 {
- "bgm": false,   # 기본: 음악 없음(앱에서 인기곡 직접 선택). {"seed":..,"key":..}이면 make_bgm.py 자체 합성 음원
+ "bgm": {"seed": 20261117, "key": "D"},   # make_bgm.py 자체 합성 음원(기본). false면 음악 없는 영상
  "scene_sec": 5.6, "xfade": 0.5,
  "scenes": [
   {"photo": "photos/unsplash/<id>.jpg", "pos": "center", "cover": true,

@@ -1,0 +1,23 @@
+{
+ "bgm": {"seed": 0, "key": "D"},
+ "scene_sec": 5.6,
+ "xfade": 0.5,
+ "scenes": [
+  {"photo": "photos/unsplash/1654161054544-bcfd5a67ebb5.jpg", "cover": true,
+   "lines": ["젠슨 황 떠난", "엔비디아 첫 실적", "[이틀 뒤엔]", "[앤트로픽 상장]"]},
+  {"photo": "photos/unsplash/1654161053835-34c071d3bcff.jpg",
+   "headline": "엔비디아,\n[17일 실적 발표]",
+   "points": ["한국시간 **18일 오전 7시** 컨퍼런스콜", "회사 제시 3분기 매출 전망\n**1080억달러(±2%)**"]},
+  {"photo": "photos/unsplash/1654161054451-6cbf0c2b51b4.jpg",
+   "headline": "임시 CEO의\n[첫 실적 발표]",
+   "points": ["젠슨 황, 12일 사장·CEO·이사직 즉시 사임", "사임 사유는 발표문에 담기지 않아", "**콜레트 크레스 CFO**가 임시 CEO 겸임"]},
+  {"photo": "photos/unsplash/1654161054556-a9ff3d0c6ed0.jpg",
+   "headline": "앤트로픽,\n[19일 나스닥 상장]",
+   "points": ["공모가 범위 주당 **70~78달러**, 티커 ANT", "범위 상단 기준 공모 규모\n최대 **644억달러(약 86조원)**"]},
+  {"photo": "photos/unsplash/1654161054448-301da2b74687.jpg",
+   "headline": "빅테크 7곳,\n[260억달러 매입]",
+   "points": ["구글·MS·엔비디아·TSMC·AMD·브로드컴·마이크론, 공모와 별도로 앤트로픽 주식 매입"],
+   "follow": "결과 나오면 바로 정리할게요\n[@taxlog_woo] 팔로우",
+   "foot": "출처: 엔비디아 발표·SEC 공시, 디지털투데이·전자신문·파이낸셜뉴스·Decrypt\nPhoto: Aleksey Cherenkevich / Unsplash · Music: Tax.Log 자체 제작\n일반 정보 제공 목적이며 투자 권유가 아닙니다."}
+ ]
+}

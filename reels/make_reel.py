@@ -6,7 +6,7 @@
 
 reel.json
 {
- "bgm": {"seed": 0, "key": "D"},          # reels/make_bgm.py 자체 합성 음원
+ "bgm": false,   # 기본: 음악 없음(앱에서 인기곡 직접 선택). {"seed":..,"key":..}이면 make_bgm.py 자체 합성 음원
  "scene_sec": 5.6, "xfade": 0.5,
  "scenes": [
   {"photo": "photos/unsplash/<id>.jpg", "pos": "center", "cover": true,
@@ -136,12 +136,16 @@ def main():
          "-preset", "medium", "-crf", "18", "-pix_fmt", "yuv420p", "-r", str(FPS), silent])
 
     bgm = spec.get("bgm", {})
-    wav = f"{tmp}/bgm.wav"
-    run([sys.executable, os.path.join(ROOT, "reels", "make_bgm.py"), wav, f"{total:.2f}",
-         str(bgm.get("seed", 0)), bgm.get("key", "D")])
     final = os.path.join(out, "reel.mp4")
-    run(["ffmpeg", "-y", "-i", silent, "-i", wav, "-map", "0:v", "-map", "1:a", "-c:v", "copy",
-         "-c:a", "aac", "-b:a", "192k", "-shortest", "-movflags", "+faststart", final])
+    if bgm is False:
+        # 음악 없는 영상(사용자가 인스타 앱에서 인기곡을 골라 직접 올림, 2026-11-16 요청)
+        run(["ffmpeg", "-y", "-i", silent, "-c:v", "copy", "-an", "-movflags", "+faststart", final])
+    else:
+        wav = f"{tmp}/bgm.wav"
+        run([sys.executable, os.path.join(ROOT, "reels", "make_bgm.py"), wav, f"{total:.2f}",
+             str(bgm.get("seed", 0)), bgm.get("key", "D")])
+        run(["ffmpeg", "-y", "-i", silent, "-i", wav, "-map", "0:v", "-map", "1:a", "-c:v", "copy",
+             "-c:a", "aac", "-b:a", "192k", "-shortest", "-movflags", "+faststart", final])
     # 커버: 첫 장면 1.2초 지점
     run(["ffmpeg", "-y", "-ss", "1.2", "-i", final, "-frames:v", "1", "-q:v", "2", os.path.join(out, "cover.jpg")])
     print(final, f"{total:.1f}s")

@@ -3,7 +3,7 @@
 > "그림은 B급, 정보는 A급." 진지한 경제뉴스를 설명하는데 등장인물은 옛날 저사양 FPS 게임에서 튀어나온 것 같은 웃기고 투박한 3D 캐릭터.
 
 ## 1. 핵심 스타일
-(2026-11-16 사용자 보완) 미니서든어택처럼 큰 머리의 SD(약 2.5등신) 캐릭터 + 픽셀이 그대로 보이는 저해상도 화면이 기준.
+(2026-11-16 사용자 최종 기준) 사용자가 만든 프로필 사진 느낌이 기준: 일반 성인 비율의 정장 캐릭터를 아래에서 올려다본 구도, 파란 하늘과 구름, 모래색 콘크리트 담·벽돌 건물(창문)·나무 상자가 있는 구형 FPS 맵, 형태는 매끈한 저폴리인데 텍스처(정장 천·벽·손)는 픽셀이 보이는 저해상도. SD(2.5등신)는 기본이 아님("sd": true 일 때만).
 초창기 온라인 FPS(미니서든어택/X Operations 시절) 특유의 저폴리곤 3D 게임 그래픽. 현대적인 고퀄리티 일러스트가 아니라 2000년대 초반 PC 게임의 투박하고 어색한 3D 그래픽.
 
 ## 2. 그래픽 필수 설정
@@ -26,9 +26,9 @@ Low Poly 3D Character · Retro FPS Game Graphics · Early 2000s PC Game Aestheti
 - 웃음은 캐릭터의 어색함과 상황의 부조화에서.
 
 ## 구현 (자동 작업용)
-- 렌더러: `python3 bgrade/render.py scene.json out.jpg [W H]` (기본 1080x1350). headless Chromium + three.js(bgrade/vendor, MIT)로 1/4 해상도로 그린 뒤 픽셀 그대로(NEAREST) 확대. 캐릭터는 기본 SD 비율("sd": false면 일반 비율 — 쓰지 않음).
-- scene.json: `map`(alley·street·warehouse·rooftop), `cam`{pos,target,fov}, `signs`[{text,arrow:"up"/"down",bg,pos,w,size}], `chars`[{pos,ry,expr,pose,outfit{type:suit/hoodie/vest,top,shirt,tie,pants},skin,hair,hairStyle:side/long/bald,cap,prop,propHand,headTilt}], `items`[{type,pos,ry,scale}].
+- 렌더러: `python3 bgrade/render.py scene.json out.jpg [W H]` (기본 1080x1350). headless Chromium + three.js(bgrade/vendor, MIT)로 1/4 해상도로 그린 뒤 픽셀 그대로(NEAREST) 확대. 기본은 일반 비율 'cs' 스타일(1/2 해상도 렌더, 매끈한 형태 + 픽셀 텍스처, 둥근 머리에 얼굴·머리카락 텍스처). "sd": true 면 SD 2.5등신 + 1/4 해상도 픽셀 화면.
+- scene.json: `map`(dust·alley·street·warehouse·rooftop), `cam`{pos,target,fov}, `signs`[{text,arrow:"up"/"down",bg,pos,w,size}], `chars`[{pos,ry,expr,pose,outfit{type:suit/hoodie/vest,top,shirt,tie,pants},skin,hair,hairStyle:swoop/side/long/bald,cap,prop,propHand,headTilt}], `items`[{type,pos,ry,scale}].
   - sd(기본 true) · `chars[].helmet`(색) 추가 가능
-  - expr: neutral·shock·happy·smug·sad·cry·angry / pose: idle·hands_up·cheer·point·facepalm·hold·shrug·head_grab·wallet_empty / prop: money·phone·briefcase·chart·receipt
-- 카드 글이 아래쪽 약 45%를 덮으므로 캐릭터 얼굴은 화면 위쪽 절반에 오게 카메라를 잡는다(SD 기준 예: cam.pos [0.2,1.2,6.2], target [0.2,1.55,0], fov 50 — 캐릭터는 z 0~-1 근처, 간판은 y 4~4.6).
+  - expr: neutral·stern·shock·happy·smug·sad·cry·angry / pose: point_up·idle·hands_up·cheer·point·facepalm·hold·shrug·head_grab·wallet_empty / prop: money·phone·briefcase·chart·receipt
+- 카드 글이 아래쪽 약 45%를 덮으므로 캐릭터 얼굴은 화면 위쪽 절반에 오게 카메라를 잡는다(기본 cs 예: 한 명 클로즈업 로우앵글 cam.pos [0.5,1.6,3.0], target [0,2.75,0], fov 56 / 두세 명이면 cam.pos [0,1.8,5.5], target [0,2.4,0]). map 기본 추천 "dust", sky ["#3f78d6","#9cc0ee"].
 - 렌더한 이미지를 make_cards_mz.py spec의 "photo"로 넣는다. 예시: samples/bgrade-v1/.

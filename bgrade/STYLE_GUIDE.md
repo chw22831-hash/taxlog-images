@@ -35,3 +35,9 @@ Low Poly 3D Character · Retro FPS Game Graphics · Early 2000s PC Game Aestheti
   - expr: neutral·stern·shock·happy·smug·sad·cry·angry / pose: point_up·idle·hands_up·cheer·point·facepalm·hold·shrug·head_grab·wallet_empty / prop: money·phone·briefcase·chart·receipt
 - 카드 글이 아래쪽 약 45%를 덮으므로 캐릭터 얼굴은 화면 위쪽 절반에 오게 카메라를 잡는다(기본 cs 예: 한 명 클로즈업 로우앵글 cam.pos [0.5,1.6,3.0], target [0,2.75,0], fov 56 / 두세 명이면 cam.pos [0,1.8,5.5], target [0,2.4,0]). map 기본 추천 "dust", sky ["#3f78d6","#9cc0ee"].
 - 렌더한 이미지를 make_cards_mz.py spec의 "photo"로 넣는다. 예시: samples/bgrade-v1/.
+
+## HF 생성 실전 메모 (2026-11-17 첫 적용, posts/2026-11-17/scenes/raw*.webp)
+- 모델: Z-Image-Turbo, 해상도 "864x1152 ( 3:4 )". 프롬프트 틀: "In-game screenshot from a 2005 Korean online first-person shooter, semi-realistic low-poly 3D character with smooth shading and slightly blurry low-resolution textures. Low-angle shot of a fictional <인물·옷·표정·포즈>. Behind: sand-colored concrete buildings with dark windows, wooden crates, clear blue sky. Plain game-engine lighting, no text."
+- 얼굴이 위쪽 40% 안에 오게: 필요하면 "Close-up waist-up shot, character's head in the upper third of the frame" 추가.
+- 후처리: 위에서 0~40px 아래부터 4:5로 자른 뒤 `python3 bgrade/retro.py crop.png bgN.jpg 1080 1350 2 1.0 128`.
+- 연출 주의(사실 확인 3차 지적): 특정 집단(예: 외국인 투자자)을 돈가방 들고 도망치는 식으로 그리지 않기, 손가락으로 위를 가리키는 포즈 등 반등·전망을 암시하는 연출 피하기.

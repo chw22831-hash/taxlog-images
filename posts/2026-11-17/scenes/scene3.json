@@ -1,0 +1,5 @@
+{"sd": false, "map": "rooftop", "sky": ["#3567c4","#a6c6ec"], "cloudSeed": 21,
+ "cam": {"pos": [0, 1.7, 5.2], "target": [0, 2.45, 0], "fov": 56},
+ "signs": [{"text": "x174", "arrow": "up", "bg": "#3a1d5c", "pos": [0.2, 5.6, -6.6], "w": 4.4, "size": 15}],
+ "chars": [{"pos": [-0.9, 0, 0], "ry": 0.35, "expr": "stern", "pose": "point_up", "outfit": {"type": "suit", "top": "#5a5f68", "tie": "#1f4f8f", "shirt": "#f2f2ee"}, "hair": "#8a8a8a", "hairStyle": "swoop", "skin": "#d6a07a"},
+           {"pos": [0.9, 0, 0.1], "ry": -0.35, "expr": "shock", "pose": "hold", "prop": "chart", "outfit": {"type": "suit", "top": "#6b2a2a", "tie": "#e0c040", "shirt": "#efe9dd"}, "hair": "#20160f", "hairStyle": "side", "skin": "#c78d63"}]}

@@ -2,6 +2,9 @@
 
 > "그림은 B급, 정보는 A급." 진지한 경제뉴스를 설명하는데 등장인물은 옛날 저사양 FPS 게임에서 튀어나온 것 같은 웃기고 투박한 3D 캐릭터.
 
+> ★ 2026-11-17 사용자 기준 재확정: 그림체 기준은 bgrade/ref/user_ref_2026-11-17.png (사용자가 보낸 미니서든어택 느낌 스크린샷). 핵심 = 반실사 저폴리 3D 캐릭터(정상 성인 비율, 매끈한 셰이딩, 흐릿한 사진 질감 얼굴·정장), 아래에서 올려다본 구도, 모래색 콘크리트 건물(어두운 창문)·나무 상자, 맑은 파란 하늘과 옅은 구름. 마인크래프트·블록 느낌(네모 팔, 픽셀 얼굴, 벽돌 골목)은 기준 미달 → bgrade/render.py(three.js) 결과는 카드에 쓰지 않는다.
+> 제작 방법: Hugging Face 이미지 생성(FLUX.1-Krea-dev 또는 Z-Image-Turbo, samples/hf-v3/prompts.txt 방식: "in-game screenshot from a 2005 Korean online FPS, semi-realistic low-poly character, smooth shading, blurry low-res textures, low-angle, sand-colored concrete buildings, wooden crates, clear blue sky" + 장면별 인물·표정·포즈) → bgrade/retro.py 로 살짝 저해상도화. 레퍼런스 속 실존 인물의 얼굴은 따라 하지 않고, 가상 인물(직장인·개미·경영진·공무원)로만. 생성 한도(ZeroGPU)가 없으면 그날 카드는 보류하고 알린다.
+
 ## 1. 핵심 스타일
 (2026-11-16 사용자 최종 기준) 사용자가 만든 프로필 사진 느낌이 기준: 일반 성인 비율의 정장 캐릭터를 아래에서 올려다본 구도, 파란 하늘과 구름, 모래색 콘크리트 담·벽돌 건물(창문)·나무 상자가 있는 구형 FPS 맵, 형태는 매끈한 저폴리인데 텍스처(정장 천·벽·손)는 픽셀이 보이는 저해상도. SD(2.5등신)는 기본이 아님("sd": true 일 때만).
 초창기 온라인 FPS(미니서든어택/X Operations 시절) 특유의 저폴리곤 3D 게임 그래픽. 현대적인 고퀄리티 일러스트가 아니라 2000년대 초반 PC 게임의 투박하고 어색한 3D 그래픽.

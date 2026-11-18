@@ -1,0 +1,58 @@
+{
+ "bgm": {
+  "seed": 20261118,
+  "key": "D"
+ },
+ "scene_sec": 5.6,
+ "xfade": 0.5,
+ "scenes": [
+  {
+   "photo": "photos/unsplash/1791269211800-b40206d9e501.jpg",
+   "cover": true,
+   "lines": [
+    "미국 주택건설 심리",
+    "14년여 만에 최저",
+    "[절반 가까이가]",
+    "[값을 내렸다고?]"
+   ]
+  },
+  {
+   "photo": "photos/unsplash/1791269211790-57f4da5d7e66.jpg",
+   "headline": "주택시장지수,\n[25로 4포인트 하락]",
+   "points": [
+    "NAHB 11월 주택시장지수 **25**",
+    "**2012년 4월** 이후 가장 낮아",
+    "50 아래면 '나쁘다'가 더 많다는 뜻"
+   ]
+  },
+  {
+   "photo": "photos/unsplash/1763411324999-744e6ce0efb7.jpg",
+   "headline": "값 내린 업체,\n[46%]",
+   "points": [
+    "조사 대상 건설업체 **46%**가 가격 인하",
+    "평균 인하폭 **6%**",
+    "판촉 혜택 제공 업체 **68%**"
+   ]
+  },
+  {
+   "photo": "photos/unsplash/1763411324490-25d1ac1b6082.jpg",
+   "headline": "세부 지수도,\n[모두 하락]",
+   "points": [
+    "현재 판매 여건 **28** (6p↓)",
+    "향후 6개월 판매 기대 **30** (2p↓)",
+    "구매 예정자 방문 **16** (2p↓)"
+   ]
+  },
+  {
+   "photo": "photos/unsplash/1783968229751-8f855e88b8ed.jpg",
+   "headline": "협회가 꼽은 배경,\n[7% 넘는 금리]",
+   "points": [
+    "모기지 금리 **7%** 이상",
+    "소비자 심리 약화·경제 불확실성",
+    "관세로 오른 자재비·인력난도 언급"
+   ],
+   "follow": "세계 경제 숫자, 매일 짧게 챙겨 드려요\n[@taxlog_woo] 팔로우",
+   "foot": "출처: NAHB 발표(11.17, 현지시간)·HousingWire·Inman\nPhoto: Griffin Wooldridge / Unsplash · Music: Tax.Log 자체 제작\n일반 정보 제공 목적이며 투자 권유가 아닙니다."
+  }
+ ]
+}

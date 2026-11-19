@@ -1,0 +1,58 @@
+{
+ "bgm": {
+  "seed": 20261119,
+  "key": "E"
+ },
+ "scene_sec": 5.6,
+ "xfade": 0.5,
+ "scenes": [
+  {
+   "photo": "photos/unsplash/-JAIbZibfQE.jpg",
+   "cover": true,
+   "lines": [
+    "미 연준 의사록 공개",
+    "거의 모든 위원이",
+    "[금리 더 올리는 게]",
+    "[적절할 것 같다고?]"
+   ]
+  },
+  {
+   "photo": "photos/unsplash/SnS6TFLw0Ws.jpg",
+   "headline": "10월엔 동결,\n[3.75~4.00%]",
+   "points": [
+    "10월 27~28일 회의 결과",
+    "기준금리 **3.75~4.00%** 유지",
+    "18일(현지시간) 의사록 공개"
+   ]
+  },
+  {
+   "photo": "photos/unsplash/SbF8JI2FKRM.jpg",
+   "headline": "반대 2표,\n[0.25%p 인상 주장]",
+   "points": [
+    "표결 결과 **10대 2**",
+    "리사 쿡 이사·베스 해맥 총재",
+    "둘 다 **0.25%p 인상** 주장"
+   ]
+  },
+  {
+   "photo": "photos/unsplash/Oj0lcYmfD9o.jpg",
+   "headline": "의사록 핵심,\n[추가 인상 적절할 듯]",
+   "points": [
+    "'**거의 모든** 참석자'의 판단",
+    "물가를 **2%** 목표로 되돌리려면",
+    "기본 전망을 전제로 한 판단"
+   ]
+  },
+  {
+   "photo": "photos/unsplash/XwnSG2cE06o.jpg",
+   "headline": "다음 회의,\n[12월 8~9일]",
+   "points": [
+    "**두어 명**은 더 큰 폭 인상도 거론",
+    "**0.25%p**를 넘는 폭을 뜻해요",
+    "결정은 12월 회의에서 나와요"
+   ],
+   "follow": "금리 뉴스, 핵심만 짧게 전해 드려요\n[@taxlog_woo] 팔로우",
+   "foot": "출처: 미 연준 의사록(11.18, 현지시간)·파이낸셜뉴스·Securities.io\nPhoto: Jeffrey Clayton / Unsplash · Music: Tax.Log 자체 제작\n일반 정보 제공 목적이며 투자 권유가 아닙니다."
+  }
+ ]
+}

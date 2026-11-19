@@ -1,0 +1,6 @@
+Z-Image-Turbo 864x1152 (3:4), CHARACTER_BIBLE 틀. retro.py factor 3.
+1 (seed 980379) shock face gripping smartphone, voxel confetti, red exclamation, stock exchange hall with stone columns and blank screens
+2 (seed 252397) high angle, tiptoe raising blank auction paddle, crowd of voxel businesspeople raising blank paddles, wood-panelled auction room
+3 (seed 334353) straining/sweating pushing overloaded wheelbarrow of green money bags, grey stone-brick street, blue sky
+4 (seed 993183) extreme low angle, jaw dropped beside skyscraper-tall tower of gold coins, tiny measuring tape, blue sky
+5 (seed 446001) nervous, mallet raised over brass bell, sweat drop + red question mark, night stone-brick street (zoom crop y=150)

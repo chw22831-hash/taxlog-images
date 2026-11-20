@@ -8,7 +8,7 @@
 
 ## 0. 준비
 - 이 작업에서 Windsor.ai·Unsplash 커넥터, 웹 검색, 크롬이 실제로 쓸 수 있는지 먼저 확인해요. 하나라도 없으면 그것 때문에 못 하는 단계는 건너뛰고 보고에 적어요.
-- 오늘 요일을 한국시간으로 확인해요. 월~금이면 카드+릴스, 토·일이면 릴스만.
+- 오늘 날짜·요일을 한국시간(TZ=Asia/Seoul)으로 확인해요. 폴더 이름 YYYY-MM-DD 도 한국 날짜. 월~금이면 카드+릴스, 토·일이면 릴스만.
 - 작업 폴더에 GitHub 저장소 chw22831-hash/taxlog-images 를 clone(이미 있으면 git pull). 커밋 작성자 user.name=chw22831-hash, user.email=chw22831@gmail.com. 이 컴퓨터에서 git push 가 안 되면 GitHub 커넥터(push_files 등)로 올려요. 둘 다 안 되면 그날 게시는 하지 말고 이유를 알려요(인스타 게시에 GitHub 주소가 필요해요).
 - 필요한 도구: python3, ffmpeg, Pillow(pip). 없으면 설치해요.
 - 카드 생성기 make_cards_mz.py (python3 make_cards_mz.py spec.json out_dir), 릴스 생성기 reels/make_reel.py (python3 reels/make_reel.py reel.json out_dir), 후처리 bgrade/retro.py. 예시: posts/2026-11-18/spec.json, posts/2026-11-18/reel/reel.json.
@@ -26,8 +26,8 @@
 1차: 모든 숫자·날짜·인용·조건 목록. 2차: 항목마다 서로 다른 출처 2곳 이상 원문을 WebFetch로 직접 확인, 안 되면 빼요(매체에 귀속하는 수치·인용은 그 매체 원문에서 확인, 비슷한 이름 매체 혼동 주의). 3차: Agent 도구로 새 서브에이전트에 카드 문구+캡션, 릴스 문구+캡션 전문을 주고 웹에서 사실·오해 소지·규정 위험을 검증받아 고쳐요. 4차: 카드 이미지와 릴스 장면 프레임을 Read로 한 장씩 보고 1차 목록과 글자 하나까지 대조.
 
 ## 3-A. 카드 그림 — 드리미나(크롬) — 평일만
-- 크롬에서 드리미나 이미지 생성 화면을 열어요(로그인돼 있어요). 장면 5개를 각각 생성해요. 비율 3:4(세로). 드리미나에 레퍼런스 이미지 기능이 있으면 bgrade/ref/main_char_ref1.webp 또는 main_char_ref2.webp 를 레퍼런스로 넣어 그림체·주인공 얼굴을 맞춰요.
-- 프롬프트 틀(장면 부분만 바꿔요): "In-game 3D screenshot from a 1999 PlayStation 1 action game, gritty low-polygon realistic human character model. Face made of flat angular polygons with a heavy square jaw and broad cheekbones, painted photographic skin texture with visible large pixels, realistic eyes with white sclera and dark irises, thick bushy dark eyebrows, short dark-brown side-parted hair. Main character: a fictional young Korean office worker in a dark navy suit, white shirt and blue tie, <표정·동작>. <조연·소품·효과>. <카메라: low-angle 등>, character's head in the upper half of the frame. Background: <배경, 기본: weathered grey stone-brick buildings under a bright blue sky with thin clouds>. Muted colors, flat game lighting, low-resolution textures. No text, no letters, no numbers, no logos."
+- 크롬에서 드리미나 이미지 생성 화면을 열어요(로그인돼 있어요). 장면 5개를 각각 생성해요. 비율 3:4(세로). 드리미나에 레퍼런스 이미지 기능이 있으면 bgrade/ref/main_char_ref1.webp 또는 main_char_ref2.webp 를 레퍼런스로 넣어 그림체·주인공 얼굴을 맞춰요(webp가 안 올라가면 Pillow로 png 변환해서 올려요). 프롬프트에 'Minecraft', 'voxel' 같은 단어는 '아니다'라는 뜻으로도 넣지 않아요(넣으면 오히려 그쪽으로 그려져요).
+- 프롬프트 틀(장면 부분만 바꿔요): "In-game 3D screenshot from a 1999 PlayStation 1 action game, gritty low-polygon realistic human character model. Face made of flat angular polygons with a heavy square jaw and broad cheekbones, painted photographic skin texture with visible large pixels, realistic eyes with white sclera and dark irises, thick bushy dark eyebrows, short dark-brown side-parted hair, exaggerated cartoon expression. Main character: a fictional young Korean office worker in a dark navy suit, white shirt and blue tie, <표정·동작>. <조연·소품·효과>. <카메라: low-angle 등>, character's head in the upper half of the frame. Background: <배경, 기본: weathered grey stone-brick buildings under a bright blue sky with thin clouds>. Muted colors, flat game lighting, low-resolution textures. No text, no letters, no numbers, no logos."
 - 장면마다 그 장 내용에 맞는 상황극(캐릭터 1~3명, 과장된 표정·포즈, 표정·포즈·소품·배경·구도를 5장 모두 다르게, 직전 카드들과도 겹치지 않게 posts/*/scenes/prompts.txt 확인). 실존 인물 얼굴을 닮게 하지 않고 가상 역할 캐릭터로. 실존 기업 로고·게임 로고·UI 금지. 손가락 위로·환호 등 전망 암시 연출 금지, 특정 집단 고정관념 연출 금지.
 - 드리미나는 한 번에 여러 장을 주니 그중 레퍼런스에 가장 가까운 1장을 골라요. 워터마크·글자가 들어간 결과는 쓰지 않아요.
 - 결과 파일은 작업 폴더 안으로 받아야 해요(이 작업은 고른 폴더 밖, 예: 다운로드 폴더를 읽지 못할 수 있어요). 크롬 다운로드 위치가 작업 폴더가 아니면, 결과 이미지의 주소를 확인해 curl로 작업 폴더에 직접 받아요. 둘 다 안 되면 이유를 보고해요.

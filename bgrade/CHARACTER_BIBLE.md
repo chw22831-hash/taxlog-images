@@ -5,18 +5,18 @@
 > 이 문서가 bgrade/STYLE_GUIDE.md 의 이전 기준(three.js 렌더, 반실사 저폴리)보다 우선이에요.
 
 ## 1. 목표
-경제 상황을 하나의 재미있는 만화 장면으로 재해석해, 웃고 놀라고 공감하면서 경제정보를 이해하게 만든다. "그림은 B급 만화, 정보는 A급." 고유한 메인 캐릭터 + 일관된 복셀풍 3D 그림체를 가진 경제 시사 만화 브랜드.
+경제 상황을 하나의 재미있는 만화 장면으로 재해석해, 웃고 놀라고 공감하면서 경제정보를 이해하게 만든다. "그림은 B급 만화, 정보는 A급." 고유한 메인 캐릭터 + 일관된 PS1 시절 반실사 저폴리 3D 그림체를 가진 경제 시사 만화 브랜드.
 
 ## 2. 메인 캐릭터 (모든 카드의 중심 주인공, 가상 인물)
-- 마인크래프트를 연상시키는 복셀풍 3D 캐릭터, 각진 얼굴과 입체적인 신체(PS1 시절 저폴리 + 큼직한 픽셀 텍스처)
+- ★ 2026-11-20 사용자 지적 반영: 기준은 ref1·2 그대로 = PS1/구형 FPS 시절 반실사 저폴리 3D 캐릭터. 사람 머리 모양·성인 비율, 깎은 듯한 각진 턱·광대, 얼굴·손·정장에 큼직하게 보이는 저해상도 픽셀 텍스처. **마인크래프트·복셀(정육면체 머리, 네모 눈, 레고 같은 몸)은 금지** — 11/19 카드처럼 큐브 머리로 나오면 다시 생성.
 - 짙은 갈색 짧은 머리(옆가르마), 굵고 뚜렷한 짙은 눈썹, 각진 턱, 개성 있는 얼굴
 - 짙은 남색 정장 + 흰 셔츠 + 파란 넥타이
 - 표정·감정·자세·동작·상황에 따른 의상 변화는 자유. 같은 표정·자세 반복 금지. 분노·기쁨·놀람·당황·좌절·의문을 과장되게.
 
 ## 3. 그림체 (절대 흔들리지 않게)
-반드시: 복셀풍 3D 입체, 각진 형태와 블록 단위 픽셀 질감, 자연스러운 3D 조명과 그림자, 과장된 표정, 영화적 카메라(로우앵글·클로즈업·원근 과장), 역동적 만화 연출, 회색 석조·벽돌 건물과 파란 하늘(장면에 따라 객장·은행·마트 등 배경 변경 가능), 원본과 어울리는 색감.
-금지: 2D 웹툰, 일본 애니, 디즈니·픽사풍, 실사 사진, 매끈한 일반 3D 애니, 콘텐츠마다 다른 그림체, '마인크래프트' 키워드만 넣고 원본 특징 무시.
-조연(직장인·개미 투자자·CEO 역할·중앙은행 관계자 역할·시민)도 모두 같은 복셀 3D 세계관으로.
+반드시: 반실사 저폴리 3D 입체(사람 얼굴), 각진 면과 큼직한 픽셀 텍스처, 자연스러운 3D 조명과 그림자, 과장된 표정, 영화적 카메라(로우앵글·클로즈업·원근 과장), 역동적 만화 연출, 회색 석조·벽돌 건물과 파란 하늘(장면에 따라 객장·은행·마트 등 배경 변경 가능), 원본과 어울리는 색감.
+금지: 마인크래프트·복셀·큐브 머리, 2D 웹툰, 일본 애니, 디즈니·픽사풍, 실사 사진, 매끈한 일반 3D 애니, 콘텐츠마다 다른 그림체, '마인크래프트' 키워드만 넣고 원본 특징 무시.
+조연(직장인·개미 투자자·CEO 역할·중앙은행 관계자 역할·시민)도 모두 같은 PS1 반실사 저폴리 세계관으로.
 
 ## 4. 연출
 - 단순히 서 있는 그림 X. 장면마다 감정과 상황이 분명하게. 뉴스 발견 장면만 반복하지 않기.
@@ -33,7 +33,7 @@
 ## 6. 제작 파이프라인
 1. Hugging Face 이미지 생성(Z-Image-Turbo 우선, 안 되면 FLUX.1-Krea-dev). 해상도 "864x1152 ( 3:4 )".
 2. 프롬프트 틀(영어, 장면 부분만 바꾼다):
-   "Retro PS1-era 3D game screenshot, voxel-like low-poly characters with chunky pixelated low-resolution textures, angular faceted faces, natural 3D lighting and shadows, cinematic low-angle camera, exaggerated cartoon expressions. Main character: a fictional young Korean man with a square jaw, thick dark eyebrows, short dark-brown side-parted hair, dark navy suit, white shirt and blue tie, <표정·동작>. <조연·소품·효과>. Background: <배경, 기본: grey stone-brick buildings under a bright blue sky with wispy clouds>. No text, no letters, no numbers, no logos."
+   "Screenshot from a 1999 PlayStation 1 era 3D game, semi-realistic low-poly human characters with realistic adult proportions and natural human head shapes, faceted angular jaw and cheekbones, chunky pixelated low-resolution textures on faces, hands and clothes, simple game-engine lighting, cinematic low-angle camera, exaggerated cartoon expressions. Main character: a fictional young Korean man with a square jaw, thick dark eyebrows, short dark-brown side-parted hair, dark navy suit, white shirt and blue tie, <표정·동작>. <조연·소품·효과>. Background: <배경, 기본: grey stone-brick buildings under a bright blue sky with wispy clouds>. Not Minecraft, not voxel, no cube-shaped heads, no blocky Lego bodies. No text, no letters, no numbers, no logos."
    - 얼굴이 화면 위쪽 40% 안에 오게: "character's head in the upper third of the frame" 추가.
 3. 후처리: 위에서 0~40px 아래부터 4:5로 잘라 `python3 bgrade/retro.py crop.png bgN.jpg 1080 1350 3 1.0 128` (factor 3 = 레퍼런스처럼 큼직한 픽셀).
 4. posts/YYYY-MM-DD/scenes/ 에 raw1~5.webp, bg1~5.jpg, prompts.txt(장면별 프롬프트) 저장.

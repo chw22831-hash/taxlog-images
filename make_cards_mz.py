@@ -181,6 +181,53 @@ def layout_page(s):
     return out + "</body></html>"
 
 
+def bubble_html(b):
+    """표지 만화 말풍선(사용자 요청 2026-11-20): 주인공이 외치는 대사를 만화책처럼.
+    그림 속 글자는 AI로 그리지 않고 여기서 얹는다. [ ]=빨간 강조.
+    {"text":"아니 코스피가 [-5%]?!?!\\n이게 무슨 일이야!!!!", "left":90, "top":70, "width":620,
+     "tail":[x,y](말풍선 왼쪽 위 기준 꼬리 끝 좌표, 주인공 입 쪽), "size":66, "rot":-4, "style":"shout"|"talk"}"""
+    import math, random
+    L, T, Wd = b.get("left", 90), b.get("top", 70), b.get("width", 620)
+    fs = b.get("size", 66)
+    nlines = b["text"].count("\n") + 1
+    Hd = b.get("height", int(nlines * fs * 1.22 + 170))
+    tx, ty = b.get("tail", [Wd * 0.6, Hd + 150])
+    cx, cy, rx, ry = Wd / 2, Hd / 2, Wd / 2, Hd / 2
+    pts = []
+    if b.get("style", "shout") == "shout":  # 삐죽삐죽한 외침 말풍선
+        rnd = random.Random(7)
+        n = 26
+        for k in range(n * 2):
+            a = math.pi * 2 * k / (n * 2)
+            r = 1.0 if k % 2 == 0 else 0.86 - rnd.random() * 0.05
+            if k % 2 == 0:
+                r = 1.08 + rnd.random() * 0.1
+            pts.append((cx + rx * r * math.cos(a), cy + ry * r * math.sin(a)))
+    else:
+        for k in range(72):
+            a = math.pi * 2 * k / 72
+            pts.append((cx + rx * math.cos(a), cy + ry * math.sin(a)))
+    # 꼬리: 풍선 가장자리에서 tail 좌표로
+    ang = math.atan2(ty - cy, tx - cx)
+    bx, by = cx + rx * 0.8 * math.cos(ang), cy + ry * 0.8 * math.sin(ang)
+    px, py = -math.sin(ang), math.cos(ang)
+    tail = [(bx + px * 46, by + py * 46), (tx, ty), (bx - px * 46, by - py * 46)]
+    poly = " ".join(f"{x:.0f},{y:.0f}" for x, y in pts)
+    tpoly = " ".join(f"{x:.0f},{y:.0f}" for x, y in tail)
+    pad = 220
+    svg = (f'<svg style="position:absolute;left:{-pad}px;top:{-pad}px" width="{Wd+pad*2}" height="{Hd+pad*2}" '
+           f'viewBox="{-pad} {-pad} {Wd+pad*2} {Hd+pad*2}">'
+           f'<g stroke="#111" stroke-width="10" stroke-linejoin="round" fill="#fff">'
+           f'<polygon points="{tpoly}"/><polygon points="{poly}"/></g>'
+           f'<polygon points="{tpoly}" fill="#fff"/><polygon points="{poly}" fill="#fff"/></svg>')
+    t = html.escape(b["text"])
+    t = re.sub(r"\[(.+?)\]", r'<span style="color:#E8231B">\1</span>', t).replace("\n", "<br>")
+    txt = (f'<div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;'
+           f'font-weight:900;font-size:{fs}px;line-height:1.18;letter-spacing:-0.04em;color:#111"><div>{t}</div></div>')
+    return (f'<div style="position:absolute;left:{L}px;top:{T}px;width:{Wd}px;height:{Hd}px;'
+            f'transform:rotate({b.get("rot",-4)}deg);filter:drop-shadow(0 8px 0 rgba(0,0,0,.35))">{svg}{txt}</div>')
+
+
 def page(s, i, date):
     if s["type"] != "cover" and s.get("layout", "photo") != "photo":
         return layout_page(s)
@@ -212,7 +259,9 @@ def page(s, i, date):
     else:
         out = f'<!doctype html><html><head><meta charset="utf-8"><style>{css}</style></head><body><div class="bg"></div>{bok}{scene_html(sc)}<div class="shade"></div>{GRAIN}<div class="vig"></div>'
     if cover:
-        lines = "<br>".join(fmt(l, bold=False) for l in s["lines"])
+        if s.get("bubble"):
+            out += bubble_html(s["bubble"])
+        lines = "<br>".join(fmt(l, bold=False) for l in s.get("lines", []))
         out += f'<div class="txt cover" style="bottom:230px"><h1>{lines}</h1></div>'
         out += '<div class="wm2" style="bottom:66px;font-size:36px">Tax.Log</div>'  # 로고는 오른쪽 하단에만
     else:

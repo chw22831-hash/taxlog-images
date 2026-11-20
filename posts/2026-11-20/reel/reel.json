@@ -1,0 +1,57 @@
+{
+ "bgm": {
+  "seed": 20261120,
+  "key": "G"
+ },
+ "scene_sec": 5.6,
+ "xfade": 0.5,
+ "scenes": [
+  {
+   "photo": "photos/unsplash/v7MuTvQZkQU.jpg",
+   "cover": true,
+   "lines": [
+    "근로·자녀장려금",
+    "아직 신청 안 한",
+    "[26만 가구]",
+    "[12월 1일이 마지막?]"
+   ]
+  },
+  {
+   "photo": "photos/unsplash/JXGoQadS98I.jpg",
+   "headline": "12월 1일까지,\n[기한 후 신청]",
+   "points": [
+    "5월 정기신청 놓친 **2025년** 소득분",
+    "국세청, **26만 가구**에 안내문 발송",
+    "**12월 2일**부터는 신청 불가"
+   ]
+  },
+  {
+   "photo": "photos/unsplash/vM78_LhdqoY.jpg",
+   "headline": "늦게 내면,\n[산정액의 95%]",
+   "points": [
+    "정기신청보다 **5%** 덜 받아요",
+    "지급 예정일 **2027년 1월 15일**",
+    "심사 결과 따라 금액이 달라져요"
+   ]
+  },
+  {
+   "photo": "photos/unsplash/lnSyq-qz2Ds.jpg",
+   "headline": "근로장려금,\n[최대 330만원]",
+   "points": [
+    "단독 **165만**·홑벌이 **285만원**",
+    "맞벌이 **330만원**, 심사 따라 달라요",
+    "재산 **2억4천만원** 미만(부채 안 빼요)"
+   ]
+  },
+  {
+   "photo": "photos/unsplash/f8tOIicRXKU.jpg",
+   "headline": "자녀장려금,\n[1명당 최대 100만원]",
+   "points": [
+    "18세 미만 자녀·소득 **7천만원** 미만",
+    "**홈택스**·안내문 QR로 직접 신청"
+   ],
+   "follow": "환급·절세, 내 상황에 맞게 궁금하다면\n[DM] 주세요",
+   "foot": "출처: 국세청 보도자료(11.2)·대한민국 정책브리핑·SBS Biz\nPhoto: Evan Wise / Unsplash · Music: Tax.Log 자체 제작\n일반 정보 제공 목적이며 투자 권유가 아닙니다."
+  }
+ ]
+}

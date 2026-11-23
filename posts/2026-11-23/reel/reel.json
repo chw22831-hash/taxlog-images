@@ -1,0 +1,58 @@
+{
+ "bgm": {
+  "seed": 20261123,
+  "key": "D"
+ },
+ "scene_sec": 5.6,
+ "xfade": 0.5,
+ "scenes": [
+  {
+   "photo": "photos/unsplash/KCJhIzJKgGg.jpg",
+   "cover": true,
+   "lines": [
+    "금요일 -5.21%",
+    "오늘 또",
+    "[4700선 붕괴]",
+    "[코스피 무슨 일?]"
+   ]
+  },
+  {
+   "photo": "photos/unsplash/-AE1q8bjEK0.jpg",
+   "headline": "금요일엔,\n[-5.21%]",
+   "points": [
+    "11/20 종가 **4869.96**",
+    "코스피·코스닥 **매도 사이드카**",
+    "삼성전자 **-7.01%** 마감"
+   ]
+  },
+  {
+   "photo": "photos/unsplash/PD2HYyHi2go.jpg",
+   "headline": "오늘은 출발부터,\n[-2.77%]",
+   "points": [
+    "11/23 시가 **4734.90**",
+    "장 초반 **4700선** 아래로",
+    "미국 기술주 급락 여파(보도)"
+   ]
+  },
+  {
+   "photo": "photos/unsplash/Ib0xV8gZnNo.jpg",
+   "headline": "이번엔,\n[개인이 팔았다]",
+   "points": [
+    "장 초반 **기관**은 순매수",
+    "**개인**은 순매도(오전 보도 기준)",
+    "정부·당국, **증안펀드** 투입 준비"
+   ]
+  },
+  {
+   "photo": "photos/unsplash/KitDdnaJUsM.jpg",
+   "headline": "해외주식 있다면,\n[손익통산 체크]",
+   "points": [
+    "1년 매매 손익을 **합산**해 과세",
+    "**250만원** 초과분에 22%",
+    "연말 **결제일** 기준으로 계산"
+   ],
+   "follow": "내 계좌에 맞는 절세가 궁금하다면\n[DM] 주세요",
+   "foot": "출처: 서울신문·국민일보·아시아경제·아주경제·브릿지경제·중앙이코노미뉴스(11/23 오전 장중 보도 기준)\nPhoto: Chris Turgeon / Unsplash · Music: Tax.Log 자체 제작\n일반 정보 제공 목적이며 투자 권유가 아닙니다."
+  }
+ ]
+}

@@ -1,0 +1,59 @@
+{
+ "bgm": {
+  "seed": 20261123,
+  "key": "E"
+ },
+ "scene_sec": 5.6,
+ "xfade": 0.5,
+ "scenes": [
+  {
+   "photo": "photos/unsplash/8mCsyImZRGY.jpg",
+   "cover": true,
+   "lines": [
+    "블프 해외직구,",
+    "면세 한도 넘으면",
+    "[전체 금액에]",
+    "[세금 붙을까?]"
+   ]
+  },
+  {
+   "photo": "photos/unsplash/yiU8G1K85AM.jpg",
+   "headline": "면세 한도,\n[150달러]",
+   "points": [
+    "미국발 목록통관은 **200달러**",
+    "그 밖의 나라는 **150달러**",
+    "블랙프라이데이는 **11월 27일**"
+   ]
+  },
+  {
+   "photo": "photos/unsplash/Lo4lKhU4SLE.jpg",
+   "pos": "85% center",
+   "headline": "한도 넘으면,\n[전체 금액에 과세]",
+   "points": [
+    "넘은 만큼만이 아니라 **전체**에",
+    "관세(품목별) + 부가세 **10%**",
+    "일부 품목은 개별소비세 등 추가"
+   ]
+  },
+  {
+   "photo": "photos/unsplash/Zw1ZDo9a_2k.jpg",
+   "pos": "75% center",
+   "headline": "영양제는,\n[미국발도 150달러]",
+   "points": [
+    "**건강기능식품·의약품**은 목록통관 X",
+    "이런 물품은 나라 상관없이 **150달러**"
+   ]
+  },
+  {
+   "photo": "photos/unsplash/Q3npY5jlnyY.jpg",
+   "pos": "70% center",
+   "headline": "나눠 받아도,\n[합칠 수 있어요]",
+   "points": [
+    "**같은 판매자·같은 날** 산 걸 나누면 합산",
+    "운송장 하나를 쪼개 통관해도 합산"
+   ],
+   "follow": "직구·관세, 내 경우가 헷갈리면\n[DM] 주세요",
+   "foot": "출처: 관세청 Q&A(한국세정신문)·비건뉴스·관세청 안내 정리\nPhoto: Brandable Box / Unsplash · Music: Tax.Log 자체 제작\n일반 정보 제공 목적이며 투자 권유가 아닙니다."
+  }
+ ]
+}

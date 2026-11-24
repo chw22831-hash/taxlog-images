@@ -1,0 +1,58 @@
+{
+ "bgm": {
+  "seed": 20261124,
+  "key": "G"
+ },
+ "scene_sec": 5.6,
+ "xfade": 0.5,
+ "scenes": [
+  {
+   "photo": "photos/unsplash/wOSRxTIf3P4.jpg",
+   "cover": true,
+   "lines": [
+    "11월 소비심리,",
+    "두 달째 뒷걸음",
+    "[집값 기대는]",
+    "[어떻게 됐을까?]"
+   ]
+  },
+  {
+   "photo": "photos/unsplash/_axKeZo-PCc.jpg",
+   "pos": "30% center",
+   "headline": "소비심리지수,\n[103.1]",
+   "points": [
+    "10월 105.4에서 **2.3p** 하락",
+    "6개 구성지수 **모두** 내려",
+    "11월 9~16일 **2,236가구** 응답"
+   ]
+  },
+  {
+   "photo": "photos/unsplash/UmMX-y1fwnU.jpg",
+   "headline": "경기 판단,\n[78로 4p 하락]",
+   "points": [
+    "구성지수 중 **가장 큰 폭** 하락",
+    "한은 \"**국내외 증시 조정**\" 응답 많아"
+   ]
+  },
+  {
+   "photo": "photos/unsplash/tnKMLlFvHiI_edit.jpg",
+   "pos": "70% center",
+   "headline": "집값 전망,\n[118로 6p 하락]",
+   "points": [
+    "**8개월 만에** 가장 큰 하락폭",
+    "장기평균(**107**)보다는 높아"
+   ]
+  },
+  {
+   "photo": "photos/unsplash/YcRdkJSrQl4_edit.jpg",
+   "pos": "0% center",
+   "headline": "물가 기대,\n[2.6%로 낮아져]",
+   "points": [
+    "1년 기대인플레 **0.1%p** 하락",
+    "금리수준전망 **124**로 3p 하락"
+   ],
+   "follow": "매달 나오는 경제 숫자, 쉽게 보려면\n[@taxlog_woo] 팔로우",
+   "foot": "출처: 한국은행 11월 소비자동향조사(뉴스웨이·시사저널e·중앙이코노미뉴스)\nPhoto: yoonzooo kang / Unsplash · Music: Tax.Log 자체 제작\n일반 정보 제공 목적이며 투자 권유가 아닙니다."
+  }
+ ]
+}

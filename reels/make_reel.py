@@ -107,8 +107,13 @@ def main():
     for i, sc in enumerate(scenes):
         photo = os.path.join(ROOT, sc["photo"])
         clip = f"{tmp}/c{i}.mp4"
+        # "pos": "가로 세로" (CSS background-position처럼, 예: "85% center", "left top") — 2026-11-24 실제로 적용되게 수정
+        kw = {"left": 0.0, "top": 0.0, "center": 0.5, "right": 1.0, "bottom": 1.0}
+        pp = (sc.get("pos") or "center center").split() + ["center"]
+        fr = [kw[t] if t in kw else float(t.rstrip("%")) / 100 for t in pp[:2]]
         fc = (
-            f"[0:v]scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H},fps={FPS},"
+            f"[0:v]scale={W}:{H}:force_original_aspect_ratio=increase,"
+            f"crop={W}:{H}:(iw-{W})*{fr[0]:.3f}:(ih-{H})*{fr[1]:.3f},fps={FPS},"
             f"eq=brightness=-0.03:saturation=0.95[bg];"
             f"[1:v]format=rgba,fade=t=in:st=0.25:d=0.6:alpha=1[a];"
             f"[2:v]format=rgba,fade=t=in:st={1.3 if not sc.get('cover') else 0}:d=0.6:alpha=1[b];"

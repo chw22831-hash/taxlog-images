@@ -101,6 +101,13 @@ def free(it, i):
     fs = it.get("size", 60)
     col = it.get("color", "#111")
     stroke = it.get("stroke", "#fff")
+    if it.get("center"):  # 가로 가운데 정렬(썸네일 후킹 문구용)
+        return "", (f'<div style="position:absolute;left:0;right:0;top:{it["y"]}px;text-align:center;font-size:{fs}px;'
+                    f'font-weight:{it.get("weight",900)};line-height:1.18;letter-spacing:-0.03em;color:{col};'
+                    f'-webkit-text-stroke:{it.get("sw",10)}px {stroke};paint-order:stroke fill">{esc(it["text"])}</div>')
+    if it.get("shade"):  # 아래쪽 어두운 그라데이션
+        return "", (f'<div style="position:absolute;left:0;right:0;bottom:0;height:{it["shade"]}px;'
+                    f'background:linear-gradient(180deg,rgba(0,0,0,0),rgba(0,0,0,.75))"></div>')
     txt = (f'<div style="position:absolute;left:{it["x"]}px;top:{it["y"]}px;transform:rotate({it.get("rot",0)}deg);'
            f'transform-origin:left top;font-size:{fs}px;font-weight:{it.get("weight",800)};line-height:1.15;'
            f'letter-spacing:-0.03em;color:{col};-webkit-text-stroke:{it.get("sw",8)}px {stroke};paint-order:stroke fill;'

@@ -1,0 +1,56 @@
+{
+ "bgm": {
+  "seed": 20261125,
+  "key": "A"
+ },
+ "scene_sec": 5.6,
+ "xfade": 0.5,
+ "scenes": [
+  {
+   "photo": "photos/unsplash/M8ZBEPfeMXY.jpg",
+   "cover": true,
+   "lines": [
+    "9월 출생아,",
+    "8년 만에 최대",
+    "[그런데 결혼은]",
+    "[왜 줄었을까?]"
+   ]
+  },
+  {
+   "photo": "photos/unsplash/90XaZKZb5pc.jpg",
+   "headline": "9월 출생아,\n[2만5113명]",
+   "points": [
+    "1년 전보다 **12.2%** 늘어",
+    "9월 기준 **8년 만에** 가장 많아",
+    "**27개월** 연속 증가"
+   ]
+  },
+  {
+   "photo": "photos/unsplash/HVuqLAKWWek.jpg",
+   "headline": "1~9월 누적,\n[14.3% 증가]",
+   "points": [
+    "**21만8896명** 태어나",
+    "1~9월 증가율 **통계 작성 이후 최고**"
+   ]
+  },
+  {
+   "photo": "photos/unsplash/jmXRQ1Qa0Xk.jpg",
+   "headline": "합계출산율,\n[9월 0.95명]",
+   "points": [
+    "1년 전보다 **0.10명** 올라",
+    "3분기는 **0.90명**(작년 0.81명)"
+   ]
+  },
+  {
+   "photo": "photos/unsplash/iBbszxPzI2s.jpg",
+   "pos": "75% center",
+   "headline": "9월 혼인,\n[11.7% 감소]",
+   "points": [
+    "**1만6299건**, 1년 전보다 **2156건** 줄어",
+    "데이터처 \"**추석 연휴·혼인지원금 기대감**에\n신고 일부 이월된 듯\""
+   ],
+   "follow": "매달 나오는 경제 숫자, 쉽게 보려면\n[@taxlog_woo] 팔로우",
+   "foot": "출처: 국가데이터처 2026년 9월 인구동향(파이낸셜뉴스·헤럴드경제·아이뉴스24)\nPhoto: Alexandr Popadin / Unsplash · Music: Tax.Log 자체 제작\n일반 정보 제공 목적이며 투자 권유가 아닙니다."
+  }
+ ]
+}

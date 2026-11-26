@@ -115,8 +115,9 @@ def free(it, i):
     return "", txt
 
 
-def page(pn, S):
-    photo = "file://" + os.path.join(ROOT, pn["photo"])
+def page(pn, S, H=None):
+    H = H or S
+    photo = "file://" + (pn["photo"] if pn["photo"].startswith("/") else os.path.join(ROOT, pn["photo"]))
     svg, txt = "", ""
     for i, it in enumerate(pn.get("items", [])):
         s, t = {"bubble": bubble, "box": box, "free": free}[it["type"]](it, i)
@@ -130,10 +131,10 @@ def page(pn, S):
 @font-face{{font-family:P;src:url('file://{FONTS}/Pretendard-ExtraBold.otf');font-weight:800}}
 @font-face{{font-family:P;src:url('file://{FONTS}/Pretendard-Black.otf');font-weight:900}}
 @font-face{{font-family:P;src:url('file://{FONTS}/Pretendard-SemiBold.otf');font-weight:600}}
-html,body{{margin:0;width:{S}px;height:{S}px;overflow:hidden;font-family:P,sans-serif}}
+html,body{{margin:0;width:{S}px;height:{H}px;overflow:hidden;font-family:P,sans-serif}}
 </style></head><body>
 <div style="position:absolute;inset:0;background:url('{photo}') center/cover no-repeat"></div>
-<svg style="position:absolute;left:0;top:0" width="{S}" height="{S}">{svg}</svg>{txt}{logo}
+<svg style="position:absolute;left:0;top:0" width="{S}" height="{H}">{svg}</svg>{txt}{logo}
 </body></html>"""
 
 
@@ -142,12 +143,13 @@ def main():
     out = sys.argv[2]
     os.makedirs(out, exist_ok=True)
     S = spec.get("size", 1080)
+    H = spec.get("height", S)  # 2026-11-26 사용자: 만화 게시글은 4:5(1080x1350)
     with sync_playwright() as p:
         b = p.chromium.launch()
-        pg = b.new_page(viewport={"width": S, "height": S})
+        pg = b.new_page(viewport={"width": S, "height": H})
         for n, pn in enumerate(spec["panels"], 1):
             hp = os.path.join(out, f".p{n}.html")
-            open(hp, "w", encoding="utf-8").write(page(pn, S))
+            open(hp, "w", encoding="utf-8").write(page(pn, S, H))
             pg.goto("file://" + os.path.abspath(hp))
             pg.wait_for_timeout(400)
             f = os.path.join(out, f"{n:02d}.jpg")

@@ -1,0 +1,222 @@
+{
+ "size": 1080,
+ "panels": [
+  {
+   "photo": "posts/2026-11-26-comic/bg6.jpg",
+   "items": [
+    {
+     "type": "free",
+     "shade": 520,
+     "text": ""
+    },
+    {
+     "type": "free",
+     "text": "또 올렸다고?!?!",
+     "x": 60,
+     "y": 100,
+     "size": 120,
+     "rot": -4,
+     "weight": 900,
+     "color": "#111",
+     "stroke": "#fff",
+     "sw": 12
+    },
+    {
+     "type": "free",
+     "center": true,
+     "text": "기준금리 3.25%로 인상 소식에\n김대리가 무너진 이유…",
+     "y": 800,
+     "size": 66,
+     "color": "#ff2a2a",
+     "stroke": "#000",
+     "sw": 12
+    }
+   ]
+  },
+  {
+   "photo": "posts/2026-11-26-comic/bg1.jpg",
+   "items": [
+    {
+     "type": "box",
+     "text": "11월 26일(목) 아침, 올해 마지막 기준금리 결정 날",
+     "center": true,
+     "y": 34,
+     "size": 34
+    },
+    {
+     "type": "bubble",
+     "text": "설마 또 올리겠어~?\n오늘은 동결이지~ 후훗",
+     "x": 50,
+     "y": 120,
+     "w": 560,
+     "tail": [
+      470,
+      450
+     ],
+     "size": 42
+    }
+   ]
+  },
+  {
+   "photo": "posts/2026-11-26-comic/bg2.jpg",
+   "items": [
+    {
+     "type": "box",
+     "text": "한국은행 기준금리 연 3.00% → [3.25%]",
+     "center": true,
+     "y": 34,
+     "size": 34
+    },
+    {
+     "type": "bubble",
+     "text": "아이 X발!!!!!!!!\n또 올렸다고?!?!",
+     "x": 30,
+     "y": 120,
+     "w": 520,
+     "tail": [
+      470,
+      470
+     ],
+     "size": 46,
+     "bold": true
+    },
+    {
+     "type": "bubble",
+     "text": "올해만 [세 번째]야!!!",
+     "x": 600,
+     "y": 220,
+     "w": 450,
+     "tail": [
+      585,
+      495
+     ],
+     "size": 38,
+     "bold": true
+    }
+   ]
+  },
+  {
+   "photo": "posts/2026-11-26-comic/bg3.jpg",
+   "items": [
+    {
+     "type": "box",
+     "text": "점심시간",
+     "center": true,
+     "y": 34,
+     "size": 34
+    },
+    {
+     "type": "bubble",
+     "text": "변동금리 대출 있는 나…\n계산기만 두드린다…",
+     "x": 30,
+     "y": 110,
+     "w": 600,
+     "tail": [
+      590,
+      545
+     ],
+     "size": 40
+    },
+    {
+     "type": "free",
+     "text": "(타닥타닥타닥)",
+     "x": 40,
+     "y": 460,
+     "size": 40,
+     "weight": 600,
+     "color": "#fff",
+     "stroke": "#111",
+     "sw": 6
+    }
+   ]
+  },
+  {
+   "photo": "posts/2026-11-26-comic/bg4.jpg",
+   "items": [
+    {
+     "type": "box",
+     "text": "퇴근길 편의점",
+     "center": true,
+     "y": 34,
+     "size": 34
+    },
+    {
+     "type": "bubble",
+     "text": "치킨은 무슨…\n컵라면이나 먹자…",
+     "x": 40,
+     "y": 110,
+     "w": 520,
+     "tail": [
+      495,
+      560
+     ],
+     "size": 42
+    },
+    {
+     "type": "free",
+     "text": "X발…(훌쩍)",
+     "x": 700,
+     "y": 330,
+     "size": 42,
+     "weight": 700,
+     "color": "#111",
+     "stroke": "#fff",
+     "sw": 7
+    }
+   ]
+  },
+  {
+   "photo": "posts/2026-11-26-comic/bg5.jpg",
+   "items": [
+    {
+     "type": "box",
+     "text": "[경제뉴스]\n26일 한국은행은 기준금리를 연 3.00%에서 3.25%로\n0.25%p 올렸다. 7·8월에 이어 올해 세 번째 인상이다.\n반도체 호황에 따른 성장세와 높은 물가 등이\n고려된 것으로 전해졌다. (SBS·파이낸셜뉴스·재경일보 보도 종합)",
+     "x": 40,
+     "y": 34,
+     "w": 1000,
+     "size": 33,
+     "align": "left"
+    },
+    {
+     "type": "free",
+     "text": "(반도체는 호황…\n내 통장은 불황…)",
+     "x": 620,
+     "y": 400,
+     "size": 36,
+     "weight": 600,
+     "color": "#fff",
+     "stroke": "#111",
+     "sw": 7
+    }
+   ]
+  },
+  {
+   "photo": "posts/2026-11-26-comic/bg6.jpg",
+   "items": [
+    {
+     "type": "free",
+     "text": "금리는 올리고…\n내 월급은 동결?!?!",
+     "x": 50,
+     "y": 70,
+     "size": 92,
+     "rot": -3,
+     "weight": 900,
+     "color": "#111",
+     "stroke": "#fff",
+     "sw": 12
+    },
+    {
+     "type": "free",
+     "text": "※ 일반 정보 제공 목적이며 투자 권유가 아닙니다.",
+     "x": 34,
+     "y": 1034,
+     "size": 22,
+     "weight": 500,
+     "color": "#fff",
+     "stroke": "#000",
+     "sw": 4
+    }
+   ]
+  }
+ ]
+}

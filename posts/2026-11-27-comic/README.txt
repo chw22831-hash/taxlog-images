@@ -1,0 +1,1 @@
+2026-11-27 정규 평일 만화(김대리 시리즈 3화, 종부세 고지서·주간 세금 주제). 생성: comic/make_comic.py comic.json . / 그림: 드리미나 Seedream 5.5 4:5(1728x2160), 상세 보기 원본 864x1080을 1080 폭 canvas 2타일 캡처 → retro factor 4 / 영상: reel/reel_nomusic.mp4(무음, 게시 X)

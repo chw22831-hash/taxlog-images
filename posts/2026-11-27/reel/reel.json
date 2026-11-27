@@ -1,0 +1,58 @@
+{
+ "bgm": {
+  "seed": 20261127,
+  "key": "E"
+ },
+ "scene_sec": 5.6,
+ "xfade": 0.5,
+ "scenes": [
+  {
+   "photo": "photos/unsplash/TM8EBHfK0AE.jpg",
+   "cover": true,
+   "lines": [
+    "서울 아파트값,",
+    "94주 연속 상승",
+    "[이번 주는 0.01%]",
+    "[구별로 살펴보면?]"
+   ]
+  },
+  {
+   "photo": "photos/unsplash/ilhRU6rmgVA_edit.jpg",
+   "headline": "오름폭,\n[6주째 둔화]",
+   "points": [
+    "이번 주 상승률 **0.01%**(지난주 0.03%)",
+    "10월 셋째 주 **0.13%** 이후 6주째 축소",
+    "상승폭 **0.03%→0.01%**로 축소"
+   ]
+  },
+  {
+   "photo": "photos/unsplash/7_PNeHyUybw_edit.jpg",
+   "headline": "강남3구,\n[모두 하락]",
+   "points": [
+    "송파 **-0.50%**(지난주 -0.42%)",
+    "강남 **-0.34%**(지난주 -0.30%)",
+    "서초 **-0.30%**(지난주 -0.31%)"
+   ]
+  },
+  {
+   "photo": "photos/unsplash/jKgJwwDW0XM_edit.jpg",
+   "headline": "25개 구 중\n[9곳 하락]",
+   "points": [
+    "광진·영등포 **하락 전환**(각 -0.01%)",
+    "용산·성동·동작·강동도 하락",
+    "양천은 보합(0.00%)"
+   ]
+  },
+  {
+   "photo": "photos/unsplash/vxmmJCtS-bk.jpg",
+   "headline": "강북권 일부는\n[상승]",
+   "points": [
+    "성북 **0.33%** · 노원 **0.27%** · 서대문 **0.25%**",
+    "강북권(14개 구) 전체 **0.15%** 상승",
+    "서울 전셋값도 **0.14%** 올라"
+   ],
+   "follow": "절세 관련 자세한 내용이 궁금하시면 DM 주세요\n놓치기 싫다면 [@taxlog_woo] 팔로우",
+   "foot": "출처: 한국부동산원 11월 넷째 주(23일 기준) 주간 아파트 가격동향(한국경제·SBS·서울신문·헤럴드경제·매일일보)\nPhoto: Brother Yoon / Unsplash · Music: Tax.Log 자체 제작\n일반 정보 제공 목적이며 투자 권유가 아닙니다."
+  }
+ ]
+}

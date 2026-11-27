@@ -1,0 +1,207 @@
+{
+ "size": 1080,
+ "height": 1350,
+ "panels": [
+  {
+   "photo": "posts/2026-11-27-comic/bg6.jpg",
+   "items": [
+    {
+     "type": "free",
+     "shade": 650,
+     "text": ""
+    },
+    {
+     "type": "free",
+     "text": "나는 왜\n안 와?!?!",
+     "x": 60,
+     "y": 110,
+     "size": 130,
+     "rot": -4,
+     "weight": 900,
+     "color": "#111",
+     "stroke": "#fff",
+     "sw": 12
+    },
+    {
+     "type": "free",
+     "center": true,
+     "text": "종부세 고지 82만 명인데…\n김대리 우편함만 텅 빈 이유",
+     "y": 1050,
+     "size": 62,
+     "color": "#ff2a2a",
+     "stroke": "#000",
+     "sw": 12
+    }
+   ]
+  },
+  {
+   "photo": "posts/2026-11-27-comic/bg1.jpg",
+   "items": [
+    {
+     "type": "box",
+     "text": "11월 27일(금) 출근길",
+     "center": true,
+     "y": 34,
+     "size": 34
+    },
+    {
+     "type": "bubble",
+     "text": "헐… 종부세 고지서가\n[82만 명]한테 갔다고?!",
+     "x": 20,
+     "y": 140,
+     "w": 540,
+     "tail": [
+      556,
+      655
+     ],
+     "size": 42
+    },
+    {
+     "type": "free",
+     "text": "(혹시 나도…?)",
+     "x": 660,
+     "y": 230,
+     "size": 40,
+     "weight": 600,
+     "color": "#fff",
+     "stroke": "#111",
+     "sw": 7
+    }
+   ]
+  },
+  {
+   "photo": "posts/2026-11-27-comic/bg2.jpg",
+   "items": [
+    {
+     "type": "box",
+     "text": "퇴근하자마자 우편함으로",
+     "center": true,
+     "y": 34,
+     "size": 34
+    },
+    {
+     "type": "bubble",
+     "text": "아 진짜!! 나한테도\n날아왔으면 어떡해!!",
+     "x": 20,
+     "y": 150,
+     "w": 560,
+     "tail": [
+      497,
+      765
+     ],
+     "size": 44,
+     "bold": true
+    },
+    {
+     "type": "free",
+     "text": "(우다다다다)",
+     "x": 690,
+     "y": 400,
+     "size": 40,
+     "weight": 700,
+     "color": "#111",
+     "stroke": "#fff",
+     "sw": 7
+    }
+   ]
+  },
+  {
+   "photo": "posts/2026-11-27-comic/bg3.jpg",
+   "items": [
+    {
+     "type": "bubble",
+     "text": "휴~ 전단지뿐이네~\n살았다~ 후훗",
+     "x": 40,
+     "y": 80,
+     "w": 560,
+     "tail": [
+      612,
+      612
+     ],
+     "size": 44
+    }
+   ]
+  },
+  {
+   "photo": "posts/2026-11-27-comic/bg4.jpg",
+   "items": [
+    {
+     "type": "box",
+     "text": "[경제뉴스]\n국세청은 올해 종합부동산세 고지 인원이 82만 명,\n세액은 6조 원이라고 밝혔다. 주택분은 73만 명·2조3000억 원.\n지난해 고지 인원(63만 명)보다 약 19만 명 많다.\n납부 기한은 12월 15일까지다.\n(국세청 발표·머니투데이·SBS Biz 보도 종합, 지난해는 2025년 11월 보도 기준)",
+     "x": 40,
+     "y": 34,
+     "w": 1000,
+     "size": 31,
+     "align": "left"
+    },
+    {
+     "type": "free",
+     "text": "(가만… 근데 나는\n왜 안 왔지…?)",
+     "x": 40,
+     "y": 440,
+     "size": 38,
+     "weight": 600,
+     "color": "#fff",
+     "stroke": "#111",
+     "sw": 7
+    }
+   ]
+  },
+  {
+   "photo": "posts/2026-11-27-comic/bg5.jpg",
+   "items": [
+    {
+     "type": "bubble",
+     "text": "아… 집이 없으니까…\n고지서도 없는 거구나…",
+     "x": 470,
+     "y": 130,
+     "w": 580,
+     "tail": [
+      503,
+      858
+     ],
+     "size": 40
+    },
+    {
+     "type": "free",
+     "text": "(훌쩍)",
+     "x": 70,
+     "y": 420,
+     "size": 44,
+     "weight": 700,
+     "color": "#111",
+     "stroke": "#fff",
+     "sw": 7
+    }
+   ]
+  },
+  {
+   "photo": "posts/2026-11-27-comic/bg6.jpg",
+   "items": [
+    {
+     "type": "free",
+     "text": "아이 X발!!!\n종부세 낼 집이라도\n있었으면 좋겠다!!!",
+     "x": 40,
+     "y": 80,
+     "size": 86,
+     "rot": -3,
+     "weight": 900,
+     "color": "#111",
+     "stroke": "#fff",
+     "sw": 12
+    },
+    {
+     "type": "free",
+     "text": "※ 일반 정보 제공 목적이며 투자 권유가 아닙니다.",
+     "x": 34,
+     "y": 1304,
+     "size": 22,
+     "weight": 500,
+     "color": "#fff",
+     "stroke": "#000",
+     "sw": 4
+    }
+   ]
+  }
+ ]
+}
